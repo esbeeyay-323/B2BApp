@@ -1,8 +1,33 @@
 import { Button, Form, Input, ConfigProvider, Checkbox } from "antd"
 import { MailOutlined, LockOutlined } from "@ant-design/icons"
+import { useAuth } from "../Context/AuthContext"
+import type { LoginValues } from "../Mock/Login"
+
 
 
 const Login = () => {
+
+    const {login, isLoading} = useAuth();
+    
+    
+    const handleFinish = async  (values:LoginValues) => {
+      const {email, password} = values;
+
+   try {      
+    const success = await login(email, password);
+
+      if(success) {
+        console.log("Login Successful")
+      }else {
+        
+        console.log("Incorrect email or passowrd")
+      }
+
+        console.log(values)
+    } catch (error) {
+        console.error(error)
+    }
+    } 
 
     return (
         <>
@@ -34,15 +59,18 @@ const Login = () => {
                 borderRadius :12,
                 paddingInline : 16,
                 colorBgContainer : "#6C5DF4"
-               
+            },
+            Checkbox : {
+                colorPrimary : "#6C5DF4",
+                colorPrimaryHover : "#564BD1"
             }
         }
     }}>
-        <Form className="w-full">
+        <Form onFinish={handleFinish} className="w-full">
             <div className="w-full mb-5!">
                 <Form.Item 
                 label={<span className="text-[13px] font-semibold">Email address</span>}
-                name="password" 
+                name="email" 
                 layout="vertical">
                     <Input placeholder="someone@example.com" 
                       prefix={<MailOutlined/>}
@@ -66,17 +94,17 @@ const Login = () => {
                <Checkbox>
                <h1 className="font-medium text-[13px]">Remeber me</h1>
                </Checkbox>
-               <a className="font-semibold text-[13px]">Forgot Password?</a>
+               <a className="font-semibold text-[13px] text-primary!">Forgot Password?</a>
             </div>
             
             <div className="w-full mb-6!">
                 <Button style={{
                     paddingBlock: "20px"
-                }} className="w-full" htmlType="submit">{<h1 className="text-[16px] font-semibold text-white">Sign up</h1>}</Button>
+                }} className="w-full" disabled={isLoading} loading ={isLoading} htmlType="submit">{<span className="text-[16px] font-semibold text-white">Sign in</span>}</Button>
             </div>
 
             <div className="w-full mb-5! flex justify-center items-center">
-                <h1 className="font-[13px]">Don't have an account? <a className="font-[13px]">Sign up</a></h1>
+                <h1 className="font-[13px]">Don't have an account? <a className="font-[13px] text-primary!">Sign up</a></h1>
             </div>
         </Form>
     </ConfigProvider>

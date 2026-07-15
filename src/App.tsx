@@ -1,12 +1,14 @@
 //import { useState } from 'react'
-import Login from './Pages/Login'
+import SideBar from './Components/Menu';
+import Login from './Pages/Login';
 
 
 function App() {
   
   return (
     <>
-    <Login/>
+    {/* <Login/> */}
+    <SideBar/>
     </>
   )
 }
