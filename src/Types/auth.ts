@@ -18,3 +18,15 @@ export interface AuthContextType {
     login : (email : string, password : string) => Promise<boolean>,
     logout : ()=>void
 }
+
+
+ type ApprovalStatus = "Pending" | "Approved" | "Rejected";
+
+export interface Approval {
+  id: number;
+  initials: string;
+  name: string;
+  department: string;
+  type: string;
+  status: ApprovalStatus;
+}

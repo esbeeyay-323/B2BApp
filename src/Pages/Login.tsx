@@ -2,6 +2,7 @@ import { Button, Form, Input, ConfigProvider, Checkbox } from "antd"
 import { MailOutlined, LockOutlined } from "@ant-design/icons"
 import { useAuth } from "../Context/AuthContext"
 import type { LoginValues } from "../Mock/Login"
+import AcronymLogo from "../assets/AcronymLogo.png"
 
 
 
@@ -40,10 +41,9 @@ const Login = () => {
             border-0 shadow-none rounded-none
             flex flex-col justify-center items-center
             py-10 px-8
-
             min-[720px]:shadow-[0_4px_10px_rgba(23,20,51,0.05),0_10px_28px_rgba(23,20,51,0.08)]
             min-[720px]:rounded-[22px]">
-            <h1 className="w-11 border-0 bg-[linear-gradient(135deg,#6C5DF4_0%,#8E7CF3_100%)] shadow-[0_8px_18px_rgba(108,93,244,0.32)] bg-primary text-white h-11 mb-5! border flex items-center justify-center rounded-[14px] text-[18px] font-extrabold text-center">G</h1>
+            <img src={AcronymLogo} alt="logo" className="w-20 flex items-center justify-center"/>
             <h2 className="font-bold text-[22px] mb-2!">Welcome back</h2>
             <h3 className="font-medium text-text-secondary text-[14px] mb-8!">Sign in to manage your business</h3>
 

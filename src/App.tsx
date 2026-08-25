@@ -1,5 +1,6 @@
 //import { useState } from 'react'
-import SideBar from './Components/Menu';
+import SideBar from './Components/SideBarMenu';
+import DashboardLayout from './Dashboard/DashboardLayout';
 import Login from './Pages/Login';
 
 
@@ -7,8 +8,9 @@ function App() {
   
   return (
     <>
-    {/* <Login/> */}
-    <SideBar/>
+    {/* <Login/>  */}
+    {/* <SideBar/> */}
+    <DashboardLayout/>
     </>
   )
 }

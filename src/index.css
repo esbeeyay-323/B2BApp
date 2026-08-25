@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @layer theme, base, antd, components, utilities;
 @import "tailwindcss";
 
@@ -25,4 +26,50 @@
   --color-accent-orange: #FFA53D;
   --color-accent-teal: #2FD1C4;
   --color-accent-purple: #8E7CF3;
+}
+
+.activity-table .ant-table-thead > tr > th {
+  background: #ffffff;
+  color: #8d8aa3;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-color: #ecebf4;
+}
+
+.activity-table .ant-table-tbody > tr > td {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-size: 13px;
+  border-color: #ecebf4;
+}
+
+.activity-table .ant-table-tbody > tr:last-child > td {
+  border-bottom: none;
+}
+
+.activity-table .ant-table-tbody > tr:hover > td {
+  background: #f6f6fb;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.ant-form,
+.ant-form button,
+.ant-form input,
+.ant-form textarea,
+.ant-form .ant-radio-button-wrapper,
+.ant-form .ant-select {
+  font-family: "Inter", sans-serif;
+}
+
+@media (max-width: 767px) {
+  .ant-form input:not([type="radio"]):not([type="checkbox"]),
+  .ant-form textarea,
+  .ant-form .ant-select-selector {
+    font-size: 16px !important;
+  }
 }
