@@ -6,7 +6,7 @@
 
   
  export const cardClassName =
-  "border-border shadow-[0_4px_16px_rgba(30,27,46,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(30,27,46,0.11)]";
+  "rounded-panel border-border bg-surface shadow-panel transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-raised";
 
  export const PageTitle = ({mainText, subText}:pageTitleProps) => { 
     return (<>

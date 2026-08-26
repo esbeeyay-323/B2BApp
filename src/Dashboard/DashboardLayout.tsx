@@ -4,12 +4,13 @@ import Header from "../Components/Header";
 import MyProfile from "./Pages/MyProfile";
 import SelfEvaluation from "./Pages/SelfEvaluation";
 import TeamAppraisals from "./Pages/TeamAppraisals";
+import DashboardHome from "./Pages/DashboardHome";
 
 
 
 const DashboardLayout = () => {
   return (
-    <main className="flex h-screen w-full overflow-hidden bg-bg">
+    <main className="flex h-dvh min-h-0 w-full max-w-full overflow-hidden bg-bg">
       
        <aside className="hidden h-full w-24/100 max-w-60 flex-col border-r border-border bg-surface lg:flex">
         <div className="w-full p-6 mb-6 border-b border-[#ECEBF3]">
@@ -24,7 +25,7 @@ const DashboardLayout = () => {
       <div className="flex min-w-0 flex-1 flex-col">
         <Header />
 
-        <div className="min-h-0 flex-1 overflow-y-auto ">
+        <div className="min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain bg-bg">
           <TeamAppraisals/>
         </div>
       </div>

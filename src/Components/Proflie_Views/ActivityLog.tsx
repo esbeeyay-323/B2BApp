@@ -88,7 +88,7 @@ const columns: TableProps<ActivityItem>["columns"] = [
     render: (_, record) => (
       <div className="flex items-center gap-3">
         <span
-          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] text-sm ${record.iconClassName}`}
+          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-control text-sm ${record.iconClassName}`}
         >
           {record.icon}
         </span>
@@ -136,9 +136,9 @@ const ActivityLog = () => {
 
     return (
         <>
-        <div className="w-full flex flex-col shadow bg-white p-6 rounded-[18px]">
-            <div className="mb-6 w-full flex justify-between">
-            <div>
+        <div className="flex w-full min-w-0 flex-col rounded-panel border border-border bg-white p-4 shadow-panel sm:p-6">
+            <div className="mb-6 flex w-full flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div className="min-w-0">
                 <h2 className="text-[17px] font-bold text-text">
                 Activity Log
                 </h2>
@@ -148,17 +148,38 @@ const ActivityLog = () => {
                 </p>
                 </div>
 
-                <Button icon = {<ExportOutlined/>}>Export CSV</Button>
+                <Button className="w-full sm:w-auto" icon = {<ExportOutlined/>}>Export CSV</Button>
             </div>
-            <Table <ActivityItem>
-                className="activity-table"
-                columns={columns}
-                dataSource={activityData}
-                rowKey="key"
-                pagination={false}
-                tableLayout="fixed"
-                scroll={{ x: 760 }}
-            />
+            <div className="grid gap-3 md:hidden">
+              {activityData.map((activity) => (
+                <article className="rounded-card border border-border p-4" key={activity.key}>
+                  <div className="flex min-w-0 items-start gap-3">
+                    <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-control text-sm ${activity.iconClassName}`}>
+                      {activity.icon}
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="break-words text-[13px] font-bold text-text">{activity.action}</h3>
+                      <p className="mt-1 break-words text-[12px] text-text-secondary">{activity.details}</p>
+                    </div>
+                  </div>
+                  <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3 text-[11px] text-text-secondary">
+                    <span>{activity.cycle}</span>
+                    <time>{activity.date}</time>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <div className="hidden min-w-0 overflow-x-auto md:block">
+              <Table <ActivityItem>
+                  className="activity-table"
+                  columns={columns}
+                  dataSource={activityData}
+                  rowKey="key"
+                  pagination={false}
+                  tableLayout="fixed"
+                  scroll={{ x: 760 }}
+              />
+            </div>
 
               
         </div>

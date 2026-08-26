@@ -3,7 +3,7 @@
 
 const BeforeSubmit = () => {
   return (
-    <section className="w-full rounded-[18px] border border-border bg-white p-5 shadow-sm">
+    <section className="w-full rounded-panel border border-border bg-white p-5 shadow-panel">
       <h2 className="text-[16px] font-bold text-text">
         Before you submit
       </h2>

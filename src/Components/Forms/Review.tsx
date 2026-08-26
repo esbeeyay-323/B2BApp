@@ -85,7 +85,7 @@ const Review = ({
 
     return (
         <div className="flex w-full flex-col gap-5 bg-bg p-3 sm:p-5">
-            <section className="rounded-[18px] border border-border bg-white p-5 shadow-sm sm:p-6">
+            <section className="rounded-panel border border-border bg-white p-5 shadow-panel sm:p-6">
                 <div className="border-b border-border pb-5">
                     <h2 className="text-[20px] font-extrabold text-text">Review Summary</h2>
                     <p className="mt-1 text-[14px] text-text-secondary">
@@ -128,7 +128,7 @@ const Review = ({
                 </div>
             </section>
 
-            <section className="rounded-[18px] border border-border bg-white p-5 shadow-sm sm:p-6">
+            <section className="rounded-panel border border-border bg-white p-5 shadow-panel sm:p-6">
                 <h2 className="border-b border-border pb-2 text-[20px] font-extrabold text-text">
                     Section Checklist
                 </h2>
@@ -157,7 +157,7 @@ const Review = ({
                 ))}
             </section>
 
-            <section className="rounded-[18px] border border-border bg-white p-5 shadow-sm sm:p-6">
+            <section className="rounded-panel border border-border bg-white p-5 shadow-panel sm:p-6">
                 <h2 className="text-[20px] font-extrabold text-text">Final comments</h2>
                 <p className="mt-1 text-[14px] text-text-secondary">
                     Anything else you'd like {managerName.split(" ")[0]} to know before reviewing this?
@@ -170,7 +170,7 @@ const Review = ({
                     rows={4}
                     style={{
                         borderColor: "#E2E0EC",
-                        borderRadius: 10,
+                        borderRadius: "var(--radius-control)",
                         boxShadow: "none",
                         fontSize: 16,
                         padding: "14px 16px",

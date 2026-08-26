@@ -10,7 +10,7 @@ const Improvement = ({ onValueChange, values }: ImprovementProps) => {
 
     return(<>
 
-        <div className="w-full rounded-[18px] bg-white p-4 sm:p-6">
+        <div className="w-full rounded-panel bg-white p-4 sm:p-6">
             
             <div className="w-full border-b border-border pb-5">
                 <p className="text-[20px] font-extrabold">Development Plan</p>
@@ -39,7 +39,7 @@ const Improvement = ({ onValueChange, values }: ImprovementProps) => {
                                                         style={{
                                                             backgroundColor: values[form.id] ? "#F7F7FB" : "#FFFFFF",
                                                             borderColor: "#E2E0EC",
-                                                            borderRadius: 10,
+                                                            borderRadius: "var(--radius-control)",
                                                             borderStyle: values[form.id] ? "solid" : "dashed",
                                                             boxShadow: "none",
                                                             color: "#2A2540",

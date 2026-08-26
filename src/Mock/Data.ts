@@ -12,6 +12,8 @@ export interface Metric {
   value: string | number;
   change: string;
   status: string;
+  icon: typeof CheckCircleOutlined;
+  iconClassName: string;
 }
 
 export interface superMetric {
@@ -25,19 +27,25 @@ export const Metrics: Metric[] = [
     title: "Total employees",
     value: 1248,
     change: "+3.4%",
-    status: "this quarter"
+    status: "this quarter",
+    icon: TeamOutlined,
+    iconClassName: "bg-violet-50 text-violet-600",
   },
   {
     title: "Average appraisal score",
     value: "3.8 / 5",
     change: "+0.2",
-    status: "vs last cycle"
+    status: "vs last cycle",
+    icon: StarOutlined,
+    iconClassName: "bg-amber-50 text-amber-600",
   },
   {
     title: "Pending reviews completed",
     value: "72%",
     change: "28%",
-    status: "due this week"
+    status: "due this week",
+    icon: CheckCircleOutlined,
+    iconClassName: "bg-emerald-50 text-emerald-600",
   }
 ];
 

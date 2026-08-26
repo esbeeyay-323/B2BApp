@@ -1,9 +1,16 @@
 import React from 'react';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import {
+  CalendarOutlined,
+  ContactsOutlined,
+  DashboardOutlined,
+  FormOutlined,
+  SettingOutlined,
+  TeamOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import {ConfigProvider} from "antd"
 import { Menu } from 'antd';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -11,38 +18,38 @@ const items: MenuItem[] = [
   {
     key: '/dashboard',
     label: 'Dashboard',
-    icon: <MailOutlined />,
+    icon: <DashboardOutlined />,
   },
   {
     key: '/profile',
     label: 'Profile',
-    icon: <AppstoreOutlined />,
+    icon: <UserOutlined />,
 
   },
  
   {
     key: '/self-evealuation',
     label: 'Self Evaluation',
-    icon: <SettingOutlined />,
+    icon: <FormOutlined />,
   }, 
   {
     key: '/team-appraisals',
     label: 'Team Appraisals',
-    icon: <SettingOutlined />,
+    icon: <TeamOutlined />,
   }, 
   {
     key: 'user-directory',
     label: 'User Directory',
-    icon: <SettingOutlined />,
+    icon: <ContactsOutlined />,
   }, 
   {
     key: '/cycle-settings',
     label: "Cycle Settings",
-    icon: <SettingOutlined />,
+    icon: <CalendarOutlined />,
   }, 
   {
-    key: 'sub7',
-    label: '/settings',
+    key: '/settings',
+    label: 'Settings',
     icon: <SettingOutlined />,
   }
 ];

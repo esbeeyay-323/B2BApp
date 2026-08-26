@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+import { Button, Grid, Table } from "antd";
+import type { TableProps } from "antd";
 
 type SelfAssessmentStatus = "Complete" | "Not started";
 type ManagerReviewStatus = "Not started" | "In progress" | "Complete";
@@ -105,6 +107,10 @@ const TeamTable = () => {
     const [activeFilter, setActiveFilter] = useState<TeamFilter>("all");
     const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
+    const smallScreen = Grid.useBreakpoint();
+    const smallScreenWidth = smallScreen.md? 220:120
+
+
     const counts = useMemo(
         () => ({
             all: teamMembers.length,
@@ -136,8 +142,110 @@ const TeamTable = () => {
         { id: "complete", label: "Complete", count: counts.complete },
     ];
 
+    const columns: TableProps<TeamMember>["columns"] = [
+        {
+            title: "Employee",
+            dataIndex: "name",
+            key: "employee",
+            fixed: "left",
+            width: smallScreenWidth,
+            rowScope: "row",
+            render: (_, member) => (
+                <div className="flex min-w-0 items-center gap-3">
+                    <span
+                        className={`flex size-10 shrink-0 items-center justify-center rounded-full text-[12px] font-extrabold text-white ${member.avatarColor}`}
+                    >
+                        {getInitials(member.name)}
+                    </span>
+                    <div className="min-w-0">
+                        <p className="m-0 font-bold leading-tight text-text">{member.name}</p>
+                        <p className="m-0 mt-1 text-[12px] leading-tight text-text-secondary">{member.role}</p>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            title: "Self-assessment",
+            dataIndex: "selfAssessment",
+            key: "selfAssessment",
+            width: 165,
+            render: (_, member) => {
+                const isComplete = member.selfAssessment === "Complete";
+
+                return (
+                    <div>
+                        <span
+                            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold before:size-1.5 before:rounded-full ${
+                                isComplete
+                                    ? "bg-emerald-50 text-emerald-700 before:bg-emerald-500"
+                                    : "bg-[#F1F0F8] text-[#77728D] before:bg-[#C6C2DC]"
+                            }`}
+                        >
+                            {member.selfAssessment}
+                        </span>
+                        <p className="m-0 mt-1 text-[12px] text-text-secondary">
+                            {member.selfAssessmentResult ?? "Waiting for employee"}
+                        </p>
+                    </div>
+                );
+            },
+        },
+        {
+            title: "Manager review",
+            dataIndex: "managerReview",
+            key: "managerReview",
+            width: 145,
+            render: (status: ManagerReviewStatus) => (
+                <span
+                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold before:size-1.5 before:rounded-full ${reviewStatusClasses[status]}`}
+                >
+                    {status}
+                </span>
+            ),
+        },
+        {
+            title: "Status",
+            dataIndex: "deadline",
+            key: "deadline",
+            width: 95,
+            render: (deadline: string, member) => (
+                <span
+                    className={`text-[12px] font-bold ${
+                        member.managerReview === "Complete" ? "text-emerald-600" : "text-[#B57300]"
+                    }`}
+                >
+                    {deadline}
+                </span>
+            ),
+        },
+        {
+            title: "Action",
+            key: "action",
+            align: "right",
+            width: 145,
+            render: (_, member) => {
+                const canReview = member.selfAssessment === "Complete";
+                const reviewIsComplete = member.managerReview === "Complete";
+
+                if (canReview && !reviewIsComplete) {
+                    return (
+                        <Button className="font-bold" type="primary">
+                            {member.managerReview === "In progress" ? "Continue Review" : "Start Review"}
+                        </Button>
+                    );
+                }
+
+                return (
+                    <span className="text-[11px] font-semibold text-text-secondary">
+                        {reviewIsComplete ? "Review completed" : "Self-assessment pending"}
+                    </span>
+                );
+            },
+        },
+    ];
+
     return (
-        <section className="overflow-hidden rounded-[18px] border border-border bg-white shadow-sm">
+        <section className="overflow-hidden rounded-panel w-full h-full border border-border bg-white shadow-panel">
             <div className="flex flex-col gap-4 p-4 sm:p-6 xl:flex-row xl:items-center xl:justify-between">
                 <div>
                     <h2 className="text-[18px] font-extrabold text-text">Your team</h2>
@@ -146,7 +254,7 @@ const TeamTable = () => {
                     </p>
                 </div>
 
-                <label className="flex items-center gap-2 self-start rounded-[10px] border border-border px-3 text-[13px] font-medium text-[#4D486F] xl:self-auto">
+                <label className="flex items-center gap-2 self-start rounded-control border border-border px-3 text-[13px] font-medium text-[#4D486F] xl:self-auto">
                     <span className="sr-only">Sort team members</span>
                     Sort:
                     <select
@@ -161,12 +269,12 @@ const TeamTable = () => {
                 </label>
             </div>
 
-            <div className="mx-4 overflow-x-auto rounded-[12px] bg-[#F1F0F8] p-1 sm:mx-6">
+            <div className="mx-4 overflow-x-auto rounded-card bg-[#F1F0F8] p-1 sm:mx-6">
                 <div className="flex min-w-max gap-1" role="tablist" aria-label="Filter team members">
                     {filters.map((filter) => (
                         <button
                             aria-selected={activeFilter === filter.id}
-                            className={`rounded-[9px] px-3 py-2 text-[12px] font-bold transition sm:px-4 sm:text-[13px] ${
+                            className={`rounded-control px-3 py-2 text-[12px] font-bold transition sm:px-4 sm:text-[13px] ${
                                 activeFilter === filter.id
                                     ? "bg-white text-primary shadow-sm"
                                     : "text-[#625D7C] hover:bg-white/60"
@@ -182,96 +290,19 @@ const TeamTable = () => {
                 </div>
             </div>
 
-            <div className="hidden px-6 pt-4 xl:block">
-                <div className="grid grid-cols-[1.35fr_1fr_1fr_.65fr_1fr] gap-4 border-b border-border px-2 pb-3 text-[11px] font-bold uppercase tracking-[0.04em] text-text-secondary">
-                    <span>Employee</span>
-                    <span>Self-assessment</span>
-                    <span>Manager review</span>
-                    <span>Status</span>
-                    <span className="sr-only">Action</span>
-                </div>
+            <div className="px-4 pb-4 pt-5 sm:px-6 sm:pb-6">
+                <Table<TeamMember>
+                    className="team-appraisals-table"
+                    columns={columns}
+                    dataSource={visibleMembers}
+                    locale={{ emptyText: "No team members match this filter." }}
+                    pagination={false}
+                    rowKey="id"
+                    scroll={{ x: 770 }}
+                    size="middle"
+                   // loading={true}
+                />
             </div>
-
-            <div className="grid gap-3 p-4 sm:grid-cols-2 sm:p-6 xl:block xl:pt-0">
-                {visibleMembers.map((member) => {
-                    const canReview = member.selfAssessment === "Complete";
-                    const reviewIsComplete = member.managerReview === "Complete";
-
-                    return (
-                        <article
-                            className="rounded-[14px] border border-border p-4 xl:grid xl:grid-cols-[1.35fr_1fr_1fr_.65fr_1fr] xl:items-center xl:gap-4 xl:rounded-none xl:border-x-0 xl:border-t-0 xl:px-2 xl:py-4"
-                            key={member.id}
-                        >
-                            <div className="flex min-w-0 items-center gap-3">
-                                <span className={`flex size-10 shrink-0 items-center justify-center rounded-full text-[12px] font-extrabold text-white ${member.avatarColor}`}>
-                                    {getInitials(member.name)}
-                                </span>
-                                <div className="min-w-0">
-                                    <h3 className="font-bold leading-tight text-text">{member.name}</h3>
-                                    <p className="mt-1 text-[12px] leading-tight text-text-secondary">{member.role}</p>
-                                </div>
-                            </div>
-
-                            <div className="mt-4 xl:mt-0">
-                                <p className="mb-1 text-[10px] font-bold uppercase tracking-wide text-text-secondary xl:hidden">
-                                    Self-assessment
-                                </p>
-                                <span
-                                    className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold before:size-1.5 before:rounded-full ${
-                                        canReview
-                                            ? "bg-emerald-50 text-emerald-700 before:bg-emerald-500"
-                                            : "bg-[#F1F0F8] text-[#77728D] before:bg-[#C6C2DC]"
-                                    }`}
-                                >
-                                    {member.selfAssessment}
-                                </span>
-                                <p className="mt-1 text-[12px] text-text-secondary">
-                                    {member.selfAssessmentResult ?? "Waiting for employee"}
-                                </p>
-                            </div>
-
-                            <div className="mt-4 xl:mt-0">
-                                <p className="mb-1 text-[10px] font-bold uppercase tracking-wide text-text-secondary xl:hidden">
-                                    Manager review
-                                </p>
-                                <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold before:size-1.5 before:rounded-full ${reviewStatusClasses[member.managerReview]}`}>
-                                    {member.managerReview}
-                                </span>
-                            </div>
-
-                            <div className="mt-4 xl:mt-0">
-                                <p className="mb-1 text-[10px] font-bold uppercase tracking-wide text-text-secondary xl:hidden">
-                                    Status
-                                </p>
-                                <p className={`text-[12px] font-bold ${reviewIsComplete ? "text-emerald-600" : "text-[#B57300]"}`}>
-                                    {member.deadline}
-                                </p>
-                            </div>
-
-                            <div className="mt-5 xl:mt-0 xl:text-right">
-                                {canReview && !reviewIsComplete ? (
-                                    <button
-                                        className="w-full rounded-[10px] bg-primary px-4 py-2.5 text-[12px] font-bold text-white transition hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 xl:w-auto"
-                                        type="button"
-                                    >
-                                        {member.managerReview === "In progress" ? "Continue Review" : "Start Review"}
-                                    </button>
-                                ) : (
-                                    <span className="block text-[11px] font-semibold text-text-secondary xl:text-right">
-                                        {reviewIsComplete ? "Review completed" : "Self-assessment pending"}
-                                    </span>
-                                )}
-                            </div>
-                        </article>
-                    );
-                })}
-            </div>
-
-            {visibleMembers.length === 0 && (
-                <p className="px-6 py-10 text-center text-[14px] text-text-secondary">
-                    No team members match this filter.
-                </p>
-            )}
         </section>
     );
 };

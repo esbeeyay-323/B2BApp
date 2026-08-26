@@ -150,16 +150,16 @@ const steps = [
         <PageTitle mainText="Self Evaluation" 
         subText="Work through each section, save as you go, and submit when you're ready for manager review."/>
 
-        <Card className="flex w-full flex-col gap-6 rounded-[18px] shadow bg-white p-4 sm:p-6">
+        <Card className="flex w-full flex-col gap-6 rounded-panel bg-white p-4 shadow-panel sm:p-6">
           <div className="flex w-full flex-col gap-4 sm:flex-row">
-            <div className="size-12.5 rounded-[18px]
+            <div className="size-12.5 rounded-card
             shrink-0 flex justify-center text-[#6F5CEA] items-center bg-[#EFEAFF]">
                 <FormOutlined/>
             </div>
             <div className="flex min-w-0 flex-col gap-2">
                 <p className="flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-4">
                 <span className="text-lg font-bold sm:text-[22px]">H1 2026 Performance Review</span>
-                <span className="inline-flex items-center gap-2 rounded-[18px] bg-[#FFF6E6] px-3 py-1 text-[12px] font-semibold text-[#B06A00]"> 
+                <span className="inline-flex items-center gap-2 rounded-full bg-[#FFF6E6] px-3 py-1 text-[12px] font-semibold text-[#B06A00]">
                 <span className=" inline-block rounded-full size-1.5 bg-[#B06A00]"/> Self-Assessment · In Progress</span>
                 </p>
                 
@@ -181,9 +181,9 @@ const steps = [
 
         <div className="grid w-full grid-cols-1 gap-4 xl:grid-cols-4">
             {evaluationMetrics.map((metric)=> (
-                <div className="shadow-xl rounded-[18px] p-6 bg-white" key={metric.id}>
+                <div className="rounded-panel border border-border bg-white p-6 shadow-panel" key={metric.id}>
                   <div className="w-full flex flex-col gap-4">
-                    <div className={`${metric.iconClassName} text-[20px] items-center flex justify-center rounded-[9px] p-2 size-12.5`}>
+                    <div className={`${metric.iconClassName} text-[20px] items-center flex justify-center rounded-control p-2 size-12.5`}>
                         {<metric.icon/>}
                     </div>
                     <div className="w-full flex flex-col gap-0.5">
@@ -197,7 +197,7 @@ const steps = [
         </div>
             
           
-                <div className="w-full bg-white shadow rounded-[18px] p-6">
+                <div className="w-full rounded-panel border border-border bg-white p-6 shadow-panel">
                     <Steps
                         current={current}
                         titlePlacement="vertical"
@@ -209,13 +209,13 @@ const steps = [
            
            <div className="flex w-full flex-col gap-6 lg:flex-row">
            
-           <div className={`w-full min-w-0 overflow-hidden rounded-[18px] bg-white lg:w-66/100`}>
+           <div className="w-full min-w-0 overflow-hidden rounded-panel border border-border bg-white shadow-panel lg:w-66/100">
               <Form form={form} layout="vertical" onFinish={handleFinish}>
                 {steps[current].content}
 
                 <div className={`flex flex-col gap-3 border-t border-border ${steps[current].title !=="Review and Submit" ? "bg-white":"bg-bg"}  p-4 sm:flex-row sm:items-center sm:justify-between sm:p-6`}>
                   <Button
-                    className="w-full rounded-lg font-semibold sm:w-auto"
+                    className="w-full rounded-control font-semibold sm:w-auto"
                     icon={<SaveOutlined />}
                     onClick={handleSaveDraft}
                     size="medium"
@@ -226,7 +226,7 @@ const steps = [
                   <div className="flex w-full gap-3 sm:w-auto">
                     {current > 0 && (
                       <Button
-                        className="flex-1 rounded-lg font-semibold sm:flex-none"
+                        className="flex-1 rounded-control font-semibold sm:flex-none"
                         icon={<LeftOutlined />}
                         onClick={previous}
                         size="medium"
@@ -237,7 +237,7 @@ const steps = [
 
                     {current < steps.length - 1 ? (
                       <Button
-                        className="flex-1 rounded-lg bg-primary px-5 font-semibold hover:bg-primary-dark sm:flex-none"
+                        className="flex-1 rounded-control bg-primary px-5 font-semibold hover:bg-primary-dark sm:flex-none"
                         icon={<RightOutlined />}
                         iconPlacement="end"
                         onClick={next}
@@ -248,7 +248,7 @@ const steps = [
                       </Button>
                     ) : (
                       <Button
-                        className="flex-1 rounded-lg bg-primary px-5 font-semibold hover:bg-primary-dark sm:flex-none"
+                        className="flex-1 rounded-control bg-primary px-5 font-semibold hover:bg-primary-dark sm:flex-none"
                         htmlType="submit"
                         icon={<CheckOutlined />}
                         size="medium"

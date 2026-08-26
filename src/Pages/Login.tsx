@@ -41,8 +41,7 @@ const Login = () => {
             border-0 shadow-none rounded-none
             flex flex-col justify-center items-center
             py-10 px-8
-            min-[720px]:shadow-[0_4px_10px_rgba(23,20,51,0.05),0_10px_28px_rgba(23,20,51,0.08)]
-            min-[720px]:rounded-[22px]">
+            min-[720px]:rounded-panel min-[720px]:bg-surface min-[720px]:shadow-panel">
             <img src={AcronymLogo} alt="logo" className="w-20 flex items-center justify-center"/>
             <h2 className="font-bold text-[22px] mb-2!">Welcome back</h2>
             <h3 className="font-medium text-text-secondary text-[14px] mb-8!">Sign in to manage your business</h3>
@@ -56,7 +55,6 @@ const Login = () => {
                     paddingBlock: 12
             },
             Button : {
-                borderRadius :12,
                 paddingInline : 16,
                 colorBgContainer : "#6C5DF4"
             },

@@ -18,7 +18,7 @@ const GoalsandObjectives = ({
 
     return (
         <>
-         <div className="w-full rounded-[18px] bg-white p-4 sm:p-6">
+         <div className="w-full rounded-panel bg-white p-4 sm:p-6">
 
             <div className="w-full border-b border-border pb-5">
                 <p className="text-[20px] font-extrabold">Goals & Objectives</p>
@@ -79,7 +79,7 @@ const GoalsandObjectives = ({
                                                     alignItems: "center",
                                                     backgroundColor: isSelected ? "#6C5DF4" : "#FFFFFF",
                                                     borderColor: isSelected ? "#6C5DF4" : "#E2E0EC",
-                                                    borderRadius: 8,
+                                                    borderRadius: "var(--radius-compact)",
                                                     boxShadow: "none",
                                                     color: isSelected ? "#FFFFFF" : "#8D8AA3",
                                                     display: "inline-flex",
@@ -125,7 +125,7 @@ const GoalsandObjectives = ({
                                 style={{
                                     backgroundColor: comments[form.id] ? "#F7F7FB" : "#FFFFFF",
                                     borderColor: "#E2E0EC",
-                                    borderRadius: 10,
+                                    borderRadius: "var(--radius-control)",
                                     borderStyle: comments[form.id] ? "solid" : "dashed",
                                     boxShadow: "none",
                                     color: "#2A2540",

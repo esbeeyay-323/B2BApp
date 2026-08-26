@@ -10,8 +10,8 @@ const TwoSideInput = ({sectionOne, sectionTwo}:TwoSideInputProps) => {
         return (<>
         
         <div className="w-full">
-                <div className="w-full flex gap-[10%]">
-                    <div className="w-45/100">
+                <div className="flex w-full flex-col gap-0 sm:flex-row sm:gap-4 lg:gap-[10%]">
+                    <div className="w-full sm:flex-1 lg:w-45/100 lg:flex-none">
                     <Form.Item 
                     label={ <span className="font-bold uppercase text-text-muted text-[12px]">
                         {sectionOne}
@@ -20,7 +20,7 @@ const TwoSideInput = ({sectionOne, sectionTwo}:TwoSideInputProps) => {
                         <Input style={{ fontSize: 16 }}/>
                     </Form.Item>
                     </div>
-                    <div className="w-45/100">
+                    <div className="w-full sm:flex-1 lg:w-45/100 lg:flex-none">
                     <Form.Item 
                     label={ <span className="font-bold uppercase text-text-muted text-[12px]">
                             {sectionTwo}

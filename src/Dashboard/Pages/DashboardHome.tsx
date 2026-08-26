@@ -1,4 +1,9 @@
-import { Avatar, Button, Card, Input } from "antd";
+import { Avatar, Card } from "antd";
+import {
+  AuditOutlined,
+  BarChartOutlined,
+  PieChartOutlined,
+} from "@ant-design/icons";
 import Barcharts from "../../Components/Analytics/BarChart";
 import DonutChart from "../../Components/Analytics/DonutChart";
 import { Metrics, type Metric } from "../../Mock/Data";
@@ -57,27 +62,42 @@ const DashboardHome = () => {
         </div>
 
         <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-          {Metrics.map((metric: Metric) => (
-            <Card
-              key={metric.title}
-              className={`w-full ${cardClassName}`}
-              styles={{ body: { padding: 20 } }}
-            >
-              <p className="mb-1.5 text-[13px] text-text-secondary">
-                {metric.title}
-              </p>
-              <p className="text-2xl font-medium text-text">{metric.value}</p>
-              <p className="mt-1.5 text-[13px] text-success">
-                {metric.change}{" "}
-                <span className="text-text-secondary">{metric.status}</span>
-              </p>
-            </Card>
-          ))}
+          {Metrics.map((metric: Metric) => {
+            const MetricIcon = metric.icon;
+
+            return (
+              <Card
+                key={metric.title}
+                className={`w-full ${cardClassName}`}
+                styles={{ body: { padding: 20 } }}
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <p className="mb-1.5 text-[13px] text-text-secondary">
+                      {metric.title}
+                    </p>
+                    <p className="text-2xl font-medium text-text">{metric.value}</p>
+                    <p className="mt-1.5 text-[13px] text-success">
+                      {metric.change}{" "}
+                      <span className="text-text-secondary">{metric.status}</span>
+                    </p>
+                  </div>
+
+                  <span
+                    aria-hidden="true"
+                    className={`flex size-11 shrink-0 items-center justify-center rounded-card text-[19px] ${metric.iconClassName}`}
+                  >
+                    <MetricIcon />
+                  </span>
+                </div>
+              </Card>
+            );
+          })}
         </div>
 
         <div className="grid w-full grid-cols-1 gap-4 xl:grid-cols-3">
           <Card
-            title="Appraisal by Department"
+            title={<span className="flex items-center gap-2"><BarChartOutlined className="text-primary" />Appraisal by Department</span>}
             className={`h-105 ${cardClassName}`}
             styles={{ body: { padding: "16px 20px 20px" } }}
           >
@@ -85,7 +105,7 @@ const DashboardHome = () => {
           </Card>
 
           <Card
-            title="Employee Reviews"
+            title={<span className="flex items-center gap-2"><PieChartOutlined className="text-primary" />Employee Reviews</span>}
             className={`h-105 ${cardClassName}`}
             styles={{ body: { padding: "16px 20px 20px" } }}
           >
@@ -93,7 +113,7 @@ const DashboardHome = () => {
           </Card>
 
           <Card
-            title="Pending Approvals"
+            title={<span className="flex items-center gap-2"><AuditOutlined className="text-primary" />Pending Approvals</span>}
             className={`h-105 ${cardClassName}`}
             styles={{ body: { padding: "8px 20px 20px" } }}
           >

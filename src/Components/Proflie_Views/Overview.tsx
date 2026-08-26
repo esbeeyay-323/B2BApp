@@ -59,9 +59,9 @@ const activities: Activity[] = [
 const Overview =() => {
 
     return (<>
-         <div className="w-full flex gap-6 justify-center">
-        <div className="w-66/100 flex flex-col gap-6 ">
-            <div className="bg-white w-full flex flex-col p-6 gap-2.5 shadow rounded-[18px]">
+         <div className="flex w-full min-w-0 flex-col gap-6 xl:flex-row xl:justify-center">
+        <div className="flex w-full min-w-0 flex-col gap-6 xl:w-66/100">
+            <div className="flex w-full flex-col gap-2.5 rounded-panel border border-border bg-white p-4 shadow-panel sm:p-6">
              <div className="mb-3">
           <h2 className="text-[15px] font-bold text-text">
            Personal Information
@@ -84,8 +84,8 @@ const Overview =() => {
             sectionTwo = "REPORTING TO"
             />}
         </div>
-            <div className="w-full bg-white shadow rounded-[18px]">
-               <div className="p-6">
+            <div className="w-full rounded-panel border border-border bg-white shadow-panel">
+               <div className="p-4 sm:p-6">
         <div className="mb-3">
           <h2 className="text-[15px] font-bold text-text">
             Recent Activity
@@ -103,13 +103,13 @@ const Overview =() => {
               className="grid grid-cols-[36px_minmax(0,1fr)] items-center gap-3 py-3"
             >
               <div
-                className={`flex h-9 w-9 items-center justify-center rounded-xl text-sm ${activity.iconClassName}`}
+                className={`flex h-9 w-9 items-center justify-center rounded-control text-sm ${activity.iconClassName}`}
               >
                 {activity.icon}
               </div>
 
               <div className="min-w-0">
-                <p className="text-[14px] font-semibold text-text">
+                <p className="break-words text-[13px] font-semibold text-text sm:text-[14px]">
                   {activity.title}
                 </p>
 
@@ -126,11 +126,11 @@ const Overview =() => {
 
 
 
-        <div className="w-31/100 flex flex-col  gap-6 ">
-          <div className="w-full p-6 bg-white shadow rounded-[18px]">
+        <div className="flex w-full min-w-0 flex-col gap-6 md:flex-row xl:w-31/100 xl:flex-col">
+          <div className="w-full rounded-panel border border-border bg-white p-4 shadow-panel sm:p-6 md:flex-1">
             {<AccountSecurity/>}
           </div>
-          <div className="w-full p-6 bg-white shadow rounded-[18px]">
+          <div className="w-full rounded-panel border border-border bg-white p-4 shadow-panel sm:p-6 md:flex-1">
             <div className="mb-4">
           <h2 className="text-[16px] font-bold text-text">
             Permissions

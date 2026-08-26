@@ -103,7 +103,7 @@ const Security = () => {
         <>
         <main className="flex w-full flex-col gap-6 lg:flex-row"> 
 
-            <div className="flex w-full flex-col items-center rounded-[18px] bg-white p-4 shadow sm:p-6 lg:w-66/100">
+            <div className="flex w-full min-w-0 flex-col items-center rounded-panel border border-border bg-white p-4 shadow-panel sm:p-6 lg:w-66/100">
                 
                 <div className="flex w-full mb-4 flex-col justify-start">
                 <h2 className="text-[17px] font-bold text-text">
@@ -120,18 +120,18 @@ const Security = () => {
 
                    const Icon = setting.icon;
                    return (
-                    <div className="flex w-full flex-col items-stretch gap-4 border-b border-[#ECEBF3] p-4 last:border-b-0 sm:flex-row sm:items-center sm:justify-between" key={setting.id}>
+                    <div className="flex w-full min-w-0 flex-col items-stretch gap-4 border-b border-[#ECEBF3] py-4 last:border-b-0 sm:flex-row sm:items-center sm:justify-between sm:px-4" key={setting.id}>
                        <div className="flex min-w-0 gap-2">
                             <div className=" w-9.5 h-9.5 flex 
                             items-center text-[#3B5BFE] bg-[#EEF1FF] justify-center shrink-0
-                            rounded-[10px]">
+                            rounded-control">
                                {<Icon/>}
                             </div>
 
                             <div className="flex min-w-0 flex-col">
                                 <p className="text-[13.5px] text-text font-bold">{setting.title}</p>
                                 {setting.type === "action" && (
-                                    <p className="text-[16px] mt-0.75 font-extrabold text-text-secondary tracking-[3px]">{setting.maskedValue}</p>
+                                    <p className="mt-0.75 break-all text-[14px] font-extrabold tracking-[2px] text-text-secondary sm:text-[16px] sm:tracking-[3px]">{setting.maskedValue}</p>
                                 )}
                                 <p className="text-[12px] text-text-secondary font-medium mt-0.75">{setting.description}</p>
                             </div>
@@ -153,7 +153,7 @@ const Security = () => {
                     )
                 })}
             </div>
-        <section className="w-full self-start rounded-[18px] bg-white p-4 shadow sm:p-6 lg:w-33/100">
+        <section className="w-full self-start rounded-panel border border-border bg-white p-4 shadow-panel sm:p-6 lg:w-33/100">
       <div className="mb-3">
         <h2 className="text-[17px] font-bold text-text">
           Active Sessions
@@ -177,7 +177,7 @@ const Security = () => {
                 <div
                   className="
                     flex h-9.5 w-9.5 shrink-0 items-center justify-center
-                    rounded-[10px] border border-[#ECEBF3]
+                    rounded-control border border-[#ECEBF3]
                     bg-[#F6F7FB] text-text-secondary
                   "
                 >

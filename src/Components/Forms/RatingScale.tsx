@@ -8,7 +8,7 @@ const ratingScale = [
 
 const RatingScale = () => {
   return (
-    <section className="rounded-[18px] border border-border bg-white p-4 shadow-sm">
+    <section className="rounded-panel border border-border bg-white p-4 shadow-panel">
       <div>
         <h2 className="text-[16px] font-bold text-text">Rating Scale Guide</h2>
         <p className="mt-0.5 text-[13px] text-text-muted">What each score means</p>
