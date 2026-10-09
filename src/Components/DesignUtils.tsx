@@ -11,9 +11,9 @@
  export const PageTitle = ({mainText, subText}:pageTitleProps) => { 
     return (<>
         
-  <div className="mb-12">
-        <h1 className="text-[29px] font-extrabold">{mainText}</h1>
-        <h1 className="text-[14.5px]  text-text-muted ">{subText}</h1>
+  <div>
+        <h1 className="font-display text-[29px] font-bold tracking-[-0.035em] text-text">{mainText}</h1>
+        <p className="mt-1 text-[14px] leading-6 text-text-secondary">{subText}</p>
         </div>
     </>)
  }

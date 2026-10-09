@@ -40,10 +40,12 @@ const profileViews: Record<ProfileTab, ReactNode> = {
     return (<>
     
     <main className="min-w-0 px-4 py-6 sm:px-6">
-        <PageTitle  
-        mainText = "Profile"
-        subText="Manage your personal details, permissions, and account security."
-        />
+        <div className="mb-8">
+            <PageTitle
+            mainText = "Profile"
+            subText="Manage your personal details, permissions, and account security."
+            />
+        </div>
         <Card className="mb-6 w-full" styles={{ body: { padding: 0 } }}>
             <div className="flex w-full flex-col items-start gap-5 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-6">
                 <div className="flex min-w-0 flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6 lg:gap-8">

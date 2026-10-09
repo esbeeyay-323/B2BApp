@@ -5,11 +5,11 @@ const Header = () => {
     
     return (
         <>
-        <header className="relative flex w-full min-w-0 shrink-0 items-center justify-between gap-3 border-b border-border bg-surface px-4 py-4 sm:gap-5 sm:px-6">
-        <div className="min-w-0 flex-1 sm:w-1/2 sm:max-w-100 sm:flex-none">
+        <header className="sticky inset-x-0 top-0 z-40 box-border flex w-full min-w-0 shrink-0 self-stretch items-center justify-between gap-3 border-b border-border bg-surface px-4 py-4 sm:gap-5 sm:px-6">
+        <div className="dashboard-search min-w-0 flex-1 sm:w-[48%] sm:max-w-xl sm:flex-none">
           <Input
             aria-label="Search dashboard"
-            placeholder="Search"
+            placeholder="Search people, goals, cycles…"
             suffix={<SearchOutlined className="p-2 text-text-secondary" />}
             onPressEnter={(event) => console.log(event)}
           />

@@ -4,7 +4,20 @@ import {
   CheckSquareOutlined, 
   ClockCircleOutlined,
   TeamOutlined,
-  StarOutlined, 
+  StarOutlined,
+  CoffeeOutlined,
+  MessageOutlined,
+  CheckOutlined,
+  ApartmentOutlined,
+  AimOutlined,
+  RiseOutlined,
+  WarningOutlined,
+  PlayCircleOutlined,
+  EditOutlined,
+  LineChartOutlined,
+  CalendarOutlined,
+ 
+
 } from "@ant-design/icons";
 
 export interface Metric {
@@ -146,5 +159,128 @@ export const teamEvaluationMetrics = [
     description: "Sep 5, 2026",
     icon: ClockCircleOutlined,
     iconClassName: "bg-red-50 text-red-500",
+  },
+];
+
+
+export const employeeMetrics = [
+  {
+    id: "total-employees",
+    title: "Total Employees",
+    value: 142,
+    description: "Across 6 departments",
+    icon: TeamOutlined,
+    iconClassName: "bg-violet-50 text-violet-600",
+  },
+  {
+    id: "active-accounts",
+    title: "Active Accounts",
+    value: 128,
+    description: "90% of workforce",
+    icon: CheckOutlined,
+    iconClassName: "bg-emerald-50 text-emerald-600",
+  },
+  {
+    id: "pending-invites",
+    title: "Pending Invites",
+    value: 9,
+    description: "3 sent over a week ago",
+    icon: MessageOutlined,
+    iconClassName: "bg-amber-50 text-amber-600",
+  },
+  {
+    id: "departments",
+    title: "Departments",
+    value: 6,
+    description: "Sales & Marketing largest",
+    icon: ApartmentOutlined,
+    iconClassName: "bg-teal-50 text-teal-600",
+  },
+  {
+    id: "on-leave",
+    title: "On Leave",
+    value: 5,
+    description: "3 returning this week",
+    icon: CoffeeOutlined,
+    iconClassName: "bg-rose-50 text-rose-600",
+  },
+];
+
+export const goalMetrics = [
+  {
+    id: "total-goals",
+    title: "Total Goals",
+    value: 48,
+    description: "Across H1 2026",
+    icon: AimOutlined,
+    iconClassName: "bg-violet-50 text-violet-600",
+  },
+  {
+    id: "on-track",
+    title: "On Track",
+    value: 31,
+    description: "65% of all goals",
+    icon: RiseOutlined,
+    iconClassName: "bg-emerald-50 text-emerald-600",
+  },
+  {
+    id: "at-risk",
+    title: "At Risk",
+    value: 9,
+    description: "Require attention",
+    icon: WarningOutlined,
+    iconClassName: "bg-amber-50 text-amber-600",
+  },
+  {
+    id: "completed",
+    title: "Completed",
+    value: 8,
+    description: "This review cycle",
+    icon: CheckCircleOutlined,
+    iconClassName: "bg-teal-50 text-teal-600",
+  },
+];
+
+
+export const cycleMetrics = [
+  {
+    id: "active-cycles",
+    title: "Active Cycles",
+    value: 2,
+    description: "Q3 review in progress",
+    icon: PlayCircleOutlined,
+    iconClassName: "bg-violet-50 text-violet-600",
+  },
+  {
+    id: "draft-cycles",
+    title: "Draft Cycles",
+    value: 2,
+    description: "Awaiting configuration",
+    icon: EditOutlined,
+    iconClassName: "bg-amber-50 text-amber-600",
+  },
+  {
+    id: "completed-cycles",
+    title: "Completed Cycles",
+    value: 14,
+    description: "Since Jan 2024",
+    icon: CheckCircleOutlined,
+    iconClassName: "bg-emerald-50 text-emerald-600",
+  },
+  {
+    id: "average-completion",
+    title: "Avg. Completion",
+    value: "87%",
+    description: "Across last 3 cycles",
+    icon: LineChartOutlined,
+    iconClassName: "bg-teal-50 text-teal-600",
+  },
+  {
+    id: "next-deadline",
+    title: "Next Deadline",
+    value: "5 days",
+    description: "Manager reviews due",
+    icon: CalendarOutlined,
+    iconClassName: "bg-pink-50 text-pink-600",
   },
 ];

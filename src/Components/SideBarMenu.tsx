@@ -1,5 +1,7 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
+  AimOutlined,
   CalendarOutlined,
   ContactsOutlined,
   DashboardOutlined,
@@ -21,34 +23,41 @@ const items: MenuItem[] = [
     icon: <DashboardOutlined />,
   },
   {
-    key: '/profile',
+    key: '/dashboard/profile',
     label: 'Profile',
     icon: <UserOutlined />,
 
   },
+
+  {
+    key: '/dashboard/goals',
+    label: 'Goals',
+    icon: < AimOutlined/>,
+
+  },
  
   {
-    key: '/self-evealuation',
+    key: '/dashboard/self-evaluation',
     label: 'Self Evaluation',
     icon: <FormOutlined />,
   }, 
   {
-    key: '/team-appraisals',
+    key: '/dashboard/team-appraisals',
     label: 'Team Appraisals',
     icon: <TeamOutlined />,
   }, 
   {
-    key: 'user-directory',
+    key: '/dashboard/user-directory',
     label: 'User Directory',
     icon: <ContactsOutlined />,
   }, 
   {
-    key: '/cycle-settings',
+    key: '/dashboard/cycle-settings',
     label: "Cycle Settings",
     icon: <CalendarOutlined />,
   }, 
   {
-    key: '/settings',
+    key: '/dashboard/settings',
     label: 'Settings',
     icon: <SettingOutlined />,
   }
@@ -57,17 +66,20 @@ const items: MenuItem[] = [
 const SideBarMenu: React.FC = () => {
   
 
-  //const navigate = useNavigate();
-  //const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   return (
   <ConfigProvider theme={{
       components : {
 
         Menu  : {
-          itemHoverColor : "#FFFFFF",
-          itemHoverBg:       "#6C5DF4",
-          itemSelectedBg : "#6C5DF480",
+          itemBorderRadius: 10,
+          itemHeight: 44,
+          itemHoverColor : "#564BD1",
+          itemHoverBg: "#EEECFE",
+          itemMarginInline: 12,
+          itemSelectedBg : "#6C5DF4",
           itemSelectedColor: "#FFFFFF",
           
         }
@@ -75,11 +87,10 @@ const SideBarMenu: React.FC = () => {
       }
   }}>
     <Menu
-      //onClick={(info)=>navigate(info.key)}
+      className="dashboard-sidebar-nav"
+      onClick={(info)=>navigate(info.key)}
+      selectedKeys={[location.pathname]}
       style={{ width: "100%", height : "100%"}}
-      defaultSelectedKeys={['/dashboard']}
-      defaultOpenKeys={['/dashboard']}
-     // selectedKeys={[location.pathname]}
       mode="inline"
       items={items}
       

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import type {User, UserRole, AuthContextType} from '../Types/auth.ts';
+import type {User, AuthContextType} from '../Types/auth.ts';
 import {MockUsers} from "../Mock/Users.ts"
 
 // 1. Create the Context object with an undefined default value

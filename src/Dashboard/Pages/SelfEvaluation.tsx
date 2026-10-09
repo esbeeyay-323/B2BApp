@@ -4,7 +4,6 @@ import { useState } from "react";
 import { evaluationMetrics } from "../../Mock/Data";
 import { PageTitle } from "../../Components/DesignUtils";
 import Competencies from "../../Components/Forms/Competencies";
-import EvaluationGuide from "../../Components/Forms/EvaluationGuide";
 import GoalsandObjectives from "../../Components/Forms/GoalsandOnjectives";
 import Improvement from "../../Components/Forms/Improvement";
 import Review from "../../Components/Forms/Review";

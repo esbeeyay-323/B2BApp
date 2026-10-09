@@ -6,7 +6,7 @@ import {
 import { Card, Progress } from "antd"
 import { PageTitle } from "../../Components/DesignUtils"
 import { teamEvaluationMetrics } from "../../Mock/Data"
-import TeamTable from "../../Components/Forms/TeamTable"
+import TeamTable from "../../Components/Tables/TeamTable"
 import { NeedsAttention, ReviewTimeline, TeamRatingSnapshot } from "../../Components/TeamAppraisalInsights"
 
 const TeamAppraisals = () => {

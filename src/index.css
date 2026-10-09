@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700&display=swap');
 @layer theme, base, antd, components, utilities;
 @import "tailwindcss";
 
 @theme {
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Sora", sans-serif;
+
   /* Brand Primary & Accents */
   --color-primary: #6C5DF4;
   --color-primary-dark: #564BD1;
@@ -36,6 +39,8 @@
   /* Depth: one resting level and one intentional raised state */
   --shadow-panel: 0 1px 2px rgba(30, 27, 46, 0.03), 0 8px 24px rgba(30, 27, 46, 0.06);
   --shadow-raised: 0 2px 4px rgba(30, 27, 46, 0.04), 0 14px 32px rgba(30, 27, 46, 0.10);
+
+  --ease-interface: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .activity-table .ant-table-thead > tr > th {
@@ -100,18 +105,272 @@
   font-size: 13px;
 }
 
+.staff-directory-table .ant-table {
+  color: var(--color-text);
+}
+
+.staff-table-reserved,
+.staff-table-reserved .ant-spin-nested-loading,
+.staff-table-reserved .ant-spin-container {
+  min-height: 0;
+  height: 100%;
+}
+
+.staff-table-reserved {
+  background: var(--color-surface);
+}
+
+.staff-directory-table .ant-table-thead > tr > th {
+  background: #fafafe;
+  color: var(--color-text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-color: var(--color-border);
+}
+
+.staff-directory-table .ant-table-tbody > tr > td {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: var(--color-text);
+  font-size: 12px;
+  border-color: var(--color-border);
+}
+
+.staff-directory-table .ant-table-tbody > tr:hover > td {
+  background: var(--color-bg);
+}
+
+.staff-directory-table .ant-table-cell-fix-left-last {
+  border-right: 1px solid var(--color-border);
+}
+
+.goals-table .ant-table {
+  color: var(--color-text);
+}
+
+.goals-table-card .ant-card-body,
+.goals-table-reserved,
+.goals-table-reserved .ant-spin-nested-loading,
+.goals-table-reserved .ant-spin-container {
+  min-height: 0;
+}
+
+.goals-table-reserved,
+.goals-table-reserved .ant-spin-nested-loading,
+.goals-table-reserved .ant-spin-container {
+  height: 100%;
+}
+
+.goals-table-reserved {
+  background: var(--color-surface);
+}
+
+.goals-table .ant-table-thead > tr > th {
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-color: var(--color-border);
+}
+
+.goals-table .ant-table-tbody > tr > td {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-color: var(--color-border);
+}
+
+.goals-table .ant-table-tbody > tr:last-child > td {
+  border-bottom: none;
+}
+
+.goals-table .ant-table-tbody > tr:hover > td {
+  background: var(--color-bg);
+}
+
+.goals-table .ant-table-cell-fix-left-last {
+  border-right: 1px solid var(--color-border);
+}
+
+.goals-table .ant-progress-line {
+  margin: 0;
+}
+
+.goals-filter-button {
+  height: 32px;
+}
+
+.goals-attention-card .ant-card-head {
+  min-height: 58px;
+  padding-inline: 20px;
+}
+
+.goals-attention-list .ant-list-item {
+  padding: 14px 20px;
+  transition: background-color 160ms ease;
+}
+
+.goals-attention-list .ant-list-item:hover {
+  background: var(--color-bg);
+}
+
+.goals-attention-list .ant-list-item-action {
+  margin-inline-start: 8px;
+}
+
+.goals-attention-list .ant-list-item-action > li {
+  padding: 0;
+}
+
+.cycles-table .ant-table {
+  color: var(--color-text);
+}
+
+.cycles-table-card .ant-card-body,
+.cycles-table-reserved,
+.cycles-table-reserved .ant-spin-nested-loading,
+.cycles-table-reserved .ant-spin-container {
+  min-height: 0;
+}
+
+.cycles-table-reserved,
+.cycles-table-reserved .ant-spin-nested-loading,
+.cycles-table-reserved .ant-spin-container {
+  height: 100%;
+}
+
+.cycles-table-reserved {
+  background: var(--color-surface);
+}
+
+.cycles-table .ant-table-thead > tr > th {
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-color: var(--color-border);
+}
+
+.cycles-table .ant-table-tbody > tr > td {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-color: var(--color-border);
+}
+
+.cycles-table .ant-table-tbody > tr:hover > td {
+  background: var(--color-bg);
+}
+
+.cycles-table .ant-table-tbody > .cycles-table-row--selected > td,
+.cycles-table .ant-table-tbody > .cycles-table-row--selected:hover > td {
+  background: var(--color-primary-tint);
+}
+
+.cycles-table .ant-table-cell-fix-left-last {
+  border-right: 1px solid var(--color-border);
+}
+
+.cycles-table .ant-progress-line {
+  margin: 0;
+}
+
+.cycles-filter-button {
+  height: 32px;
+}
+
+.cycle-info-card .ant-card-head {
+  min-height: 58px;
+  padding-inline: 20px;
+}
+
+.cycle-info-descriptions .ant-descriptions-item-label {
+  padding-bottom: 2px;
+  color: var(--color-text-secondary);
+  font-size: 10px;
+}
+
+.cycle-info-descriptions .ant-descriptions-item-content {
+  padding-bottom: 14px;
+  color: var(--color-text);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.cycle-phase-timeline .ant-timeline-item {
+  padding-bottom: 15px;
+}
+
+.cycle-phase-timeline .ant-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.cycle-phase-timeline .ant-timeline-item-tail {
+  border-inline-start-color: var(--color-border);
+}
+
+@media (max-width: 767px) {
+  .goals-table-card .ant-card-body {
+    overflow: hidden;
+  }
+
+  .goals-table .ant-table-thead > tr > th {
+    font-size: 9px;
+  }
+
+  .goals-table .ant-table-tbody > tr > td {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+
+  .goals-attention-card .ant-card-head,
+  .goals-attention-list .ant-list-item {
+    padding-inline: 16px;
+  }
+
+  .cycles-table-card .ant-card-body {
+    overflow: hidden;
+  }
+
+  .cycles-table .ant-table-thead > tr > th {
+    font-size: 9px;
+  }
+
+  .cycles-table .ant-table-tbody > tr > td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .cycle-info-card .ant-card-head {
+    padding-inline: 16px;
+  }
+}
+
 html,
 body,
 #root {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
+}
+
+html {
+  background: var(--color-surface);
+  scrollbar-color: var(--color-text-secondary) var(--color-surface);
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--color-surface);
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background: var(--color-bg);
-  font-family: "Inter", sans-serif;
+  font-family: "Manrope", sans-serif;
 }
 
 /* Keep Ant Design primitives on the same shape and depth scale as custom UI. */
@@ -119,6 +378,10 @@ body {
   border-color: var(--color-border);
   border-radius: var(--radius-panel);
   box-shadow: var(--shadow-panel);
+  transition:
+    border-color 220ms var(--ease-interface),
+    box-shadow 220ms var(--ease-interface),
+    transform 220ms var(--ease-interface);
 }
 
 .ant-card .ant-card-head {
@@ -134,12 +397,32 @@ body {
   border-radius: var(--radius-control);
 }
 
+.ant-btn {
+  transition:
+    background-color 180ms var(--ease-interface),
+    border-color 180ms var(--ease-interface),
+    box-shadow 180ms var(--ease-interface),
+    color 180ms var(--ease-interface),
+    transform 180ms var(--ease-interface);
+}
+
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-input-number,
+.ant-picker,
+.ant-select .ant-select-selector {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease !important;
+}
+
 .ant-btn:not(.ant-btn-text):not(.ant-btn-link) {
   box-shadow: none;
 }
 
 .ant-btn-primary:not(:disabled):hover {
-  box-shadow: 0 6px 16px rgba(108, 93, 244, 0.22);
+  box-shadow: 0 8px 20px rgba(108, 93, 244, 0.24);
 }
 
 .ant-form,
@@ -148,7 +431,232 @@ body {
 .ant-form textarea,
 .ant-form .ant-radio-button-wrapper,
 .ant-form .ant-select {
-  font-family: "Inter", sans-serif;
+  font-family: "Manrope", sans-serif;
+}
+
+.dashboard-search .ant-input-affix-wrapper {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  border-color: transparent;
+  background: var(--color-bg);
+  box-shadow: inset 0 0 0 1px rgba(30, 27, 46, 0.025);
+}
+
+.dashboard-search .ant-input {
+  min-width: 0;
+}
+
+.dashboard-search .ant-input-affix-wrapper:hover {
+  border-color: rgba(108, 93, 244, 0.45);
+  background: var(--color-surface);
+}
+
+.dashboard-search .ant-input-affix-wrapper-focused {
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 3px rgba(108, 93, 244, 0.12);
+}
+
+.dashboard-sidebar-nav.ant-menu {
+  border-inline-end: 0 !important;
+  background: transparent;
+}
+
+.dashboard-sidebar-nav .ant-menu-item {
+  font-size: 13px;
+  font-weight: 650;
+  transition:
+    background-color 180ms var(--ease-interface),
+    color 180ms var(--ease-interface),
+    transform 180ms var(--ease-interface);
+}
+
+.dashboard-sidebar-nav .ant-menu-item:active {
+  transform: scale(0.985);
+}
+
+.settings-card {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.settings-card .ant-card-body,
+.settings-card__header > div,
+.settings-card .ant-form-item,
+.settings-card .ant-input-group-wrapper {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.settings-card .ant-input-group {
+  width: 100%;
+}
+
+.workspace-url-prefix {
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.settings-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 20px 18px;
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(115deg, rgba(246, 246, 251, 0.8), rgba(255, 255, 255, 0));
+}
+
+.settings-section-icon {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-control);
+  font-size: 16px;
+}
+
+.settings-card__title {
+  color: var(--color-text);
+  font-family: "Sora", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.settings-card__description {
+  margin-top: 4px;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.settings-toggle-row {
+  display: flex;
+  min-height: 94px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 18px;
+  transition:
+    background-color 180ms ease,
+    padding-inline 180ms var(--ease-interface),
+    margin-inline 180ms var(--ease-interface);
+}
+
+.settings-toggle-row:active {
+  background: var(--color-primary-tint);
+}
+
+.settings-card .ant-form-item-label > label {
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.settings-card .ant-form-item-extra {
+  margin-top: 5px;
+  color: var(--color-text-secondary);
+  font-size: 10px;
+}
+
+.settings-card .ant-input,
+.settings-card .ant-input-affix-wrapper,
+.settings-card .ant-select-selector {
+  min-height: 42px;
+}
+
+.settings-card .ant-select-selection-item,
+.settings-card .ant-select-selection-placeholder {
+  line-height: 40px !important;
+}
+
+button,
+a,
+[role="button"],
+[role="tab"],
+select,
+label:has(input),
+label:has(.ant-switch) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:not(:disabled),
+a[href],
+[role="button"],
+[role="tab"],
+select:not(:disabled) {
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  :where(.ant-card, .shadow-panel):hover {
+    border-color: rgba(108, 93, 244, 0.22);
+    box-shadow: var(--shadow-raised);
+    transform: translateY(-2px);
+  }
+
+  .ant-btn:not(:disabled):hover,
+  button:not(:disabled):hover {
+    transform: translateY(-1px);
+  }
+
+  .ant-btn:not(:disabled):active,
+  button:not(:disabled):active,
+  [role="button"]:active,
+  [role="tab"]:active {
+    transform: translateY(0) scale(0.975);
+  }
+
+  .settings-toggle-row:hover {
+    margin-inline: -8px;
+    padding-inline: 8px;
+    background: rgba(238, 236, 254, 0.62);
+  }
+
+  .ant-table-tbody > tr {
+    transition: background-color 180ms ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  :where(.ant-card, .shadow-panel):hover,
+  .ant-btn:not(:disabled):hover,
+  button:not(:disabled):hover {
+    transform: none;
+  }
+}
+
+@media (min-width: 640px) {
+  .settings-card__header {
+    padding-inline: 24px;
+  }
+}
+
+@media (max-width: 639px) {
+  .dashboard-search {
+    width: 0;
+  }
+
+  .workspace-url-prefix {
+    display: inline-block;
+    max-width: 128px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 @media (max-width: 767px) {

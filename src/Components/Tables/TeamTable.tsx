@@ -161,7 +161,7 @@ const TeamTable = () => {
                         <p className="m-0 font-bold leading-tight text-text">{member.name}</p>
                         <p className="m-0 mt-1 text-[12px] leading-tight text-text-secondary">{member.role}</p>
                     </div>
-                </div>
+                </div> 
             ),
         },
         {

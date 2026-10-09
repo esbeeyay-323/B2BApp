@@ -1,27 +1,21 @@
-import { Card } from "antd";
+import { Button, Card } from "antd";
 import { PageTitle } from "../../Components/DesignUtils";
-import { employeeMetrics } from "../../Mock/Data.ts";
-import StaffTable from "../../Components/Tables/StaffTable.tsx";
-import { useState } from "react";
-import type { StaffMember } from "../../Components/Tables/StaffTable.tsx";
-import UserInfo from "../../Components/UserInfo.tsx";
-
-const UserDirectory = () => {
-
-    const [selectedMember, setSelectedMember] = useState<StaffMember|null>(null)
+import { goalMetrics } from "../../Mock/Data";
+import GoalsTable from "../../Components/Tables/GoalsTable";
+import GoalsAttention from "../../Components/GoalsAttention";
 
 
-    const handleStaffSelect = (member:StaffMember) => {
-            setSelectedMember(member)
-    }
+const Goals = () => {
+
+    return (<>
     
-    return (
-        <>
-         <main className="flex min-w-0 flex-col gap-8 px-4 py-6 sm:px-6">
-            <PageTitle mainText="User Directory" subText="Manage everyone across your organization"/>
-
-            <div className="grid w-full grid-cols-1 gap-4 xl:grid-cols-5">
-                        {employeeMetrics.map((metric)=> (
+      <main className="flex min-w-0 flex-col gap-8 px-4 py-6 sm:px-6">
+    <div className="w-full flex flex-col lg:justify-between lg:flex-row">
+        <PageTitle mainText="Goals" subText="Align individual performance with company priorities"/>
+        <Button className="mt-2.5 ">+ New Goal</Button>
+    </div>
+            <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                        {goalMetrics.map((metric)=> (
                             <Card className="rounded-panel bg-white p-6 shadow-panel" key={metric.id}>
                               <div className="w-full flex flex-col gap-4">
                                 <div className={`${metric.iconClassName} text-[20px] items-center flex justify-center rounded-control p-2 size-12.5`}>
@@ -37,21 +31,21 @@ const UserDirectory = () => {
                         ))}
                     </div>
 
-                        <div className="flex w-full flex-col gap-6 lg:flex-row">
+                     <div className="flex w-full flex-col  gap-6 lg:flex-row">
                             
-                        <div className="w-full min-w-0 overflow-hidden rounded-panel bg-white lg:w-66/100">
-                              <StaffTable handleStaffSelect={handleStaffSelect}/>
+                        <div className="w-full min-w-0 lg:w-66/100">
+                            <GoalsTable />
                         </div>
                         <div className="w-full min-w-0 lg:flex-1">
                             {/* all Designed Components go here */}
-                            <UserInfo member={selectedMember} onClose={() => setSelectedMember(null)} />
+                            <GoalsAttention />
                              
                         </div>
 
                         </div> 
 
-         </main>
-        </>
-    )
+      </main> 
+    </>)
 }
-export default UserDirectory;
+
+export default Goals;
