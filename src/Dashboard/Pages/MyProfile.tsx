@@ -31,8 +31,10 @@ const profileTabs: { id: ProfileTab; label: string }[] = [
 ];
 
 const profileViews: Record<ProfileTab, ReactNode> = {
-  "overview": <Overview />,
-  "personal-details": <PersonalDetails />,
+  "overview": <Overview onViewMore = {()=> setActiveTab("personal-details")}
+                        onViewLogs = {()=> setActiveTab("activity-log")}
+                        onViewSecurity = {()=> setActiveTab("security")}/>,
+  "personal-details": <PersonalDetails/>,
   "activity-log": <ActivityLog />,
   "security": <Security />,
 };
