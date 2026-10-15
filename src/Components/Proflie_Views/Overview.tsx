@@ -1,5 +1,6 @@
 import TwoSideInput from "../Forms/TwoSideInput";
 import {
+  ArrowRightOutlined,
   CheckOutlined,
   EditOutlined,
   PlusOutlined,
@@ -7,6 +8,8 @@ import {
 } from "@ant-design/icons";
 import type { ReactNode } from "react";
 import AccountSecurity from "./RecentActivity";
+import { Button } from "antd";
+import { profilePermissions } from "./ProfilePermissions";
 
 interface Activity {
   id: number;
@@ -15,14 +18,6 @@ interface Activity {
   icon: ReactNode;
   iconClassName: string;
 }
-
-const permissions = [
-  "Manage all users",
-  "Create & close cycles",
-  "Final appraisal approval",
-  "Export system reports",
-];
-
 
 const activities: Activity[] = [
   {
@@ -55,14 +50,21 @@ const activities: Activity[] = [
   },
 ];
 
+interface moreProps {
+  onViewMore : () => void;
+  onViewLogs : () => void;
+  onViewSecurity: () => void;
 
-const Overview =() => {
+}
+
+const Overview =({onViewMore, onViewLogs, onViewSecurity}:moreProps) => {
 
     return (<>
          <div className="flex w-full min-w-0 flex-col gap-6 xl:flex-row xl:justify-center">
         <div className="flex w-full min-w-0 flex-col gap-6 xl:w-66/100">
             <div className="flex w-full flex-col gap-2.5 rounded-panel border border-border bg-white p-4 shadow-panel sm:p-6">
-             <div className="mb-3">
+             <div className="mb-3 flex justify-between">
+         <div>
           <h2 className="text-[15px] font-bold text-text">
            Personal Information
           </h2>
@@ -70,6 +72,15 @@ const Overview =() => {
           <p className="text-[13px] text-text-secondary">
             Your basic profile details
           </p>
+          </div> 
+
+          <Button className="shrink-0 px-0 font-semibold !text-primary hover:!text-primary-dark" type="link" onClick={onViewMore}>
+               <span className="flex items-center gap-2">
+                View more
+                <ArrowRightOutlined />
+              </span>
+          </Button>
+
         </div>
             {<TwoSideInput 
             sectionOne = "FULLNAME"
@@ -84,9 +95,13 @@ const Overview =() => {
             sectionTwo = "REPORTING TO"
             />}
         </div>
+            
+            
+            
             <div className="w-full rounded-panel border border-border bg-white shadow-panel">
                <div className="p-4 sm:p-6">
-        <div className="mb-3">
+        <div className="mb-3 flex justify-between">
+          <div>
           <h2 className="text-[15px] font-bold text-text">
             Recent Activity
           </h2>
@@ -94,6 +109,14 @@ const Overview =() => {
           <p className="text-[13px] text-text-secondary">
             Latest actions on your account
           </p>
+          </div>
+
+           <Button className="shrink-0 px-0 font-semibold !text-primary hover:!text-primary-dark" type="link" onClick={onViewLogs}>
+               <span className="flex items-center gap-2">
+                View more
+                <ArrowRightOutlined />
+              </span>
+          </Button>
         </div>
 
         <ul className="divide-y divide-border">
@@ -128,10 +151,11 @@ const Overview =() => {
 
         <div className="flex w-full min-w-0 flex-col gap-6 md:flex-row xl:w-31/100 xl:flex-col">
           <div className="w-full rounded-panel border border-border bg-white p-4 shadow-panel sm:p-6 md:flex-1">
-            {<AccountSecurity/>}
+            {<AccountSecurity onViewSecurity = {onViewSecurity}/>}
           </div>
           <div className="w-full rounded-panel border border-border bg-white p-4 shadow-panel sm:p-6 md:flex-1">
-            <div className="mb-4">
+            <div className="mb-4 flex items-start justify-between gap-4">
+              <div className="min-w-0">
           <h2 className="text-[16px] font-bold text-text">
             Permissions
           </h2>
@@ -139,12 +163,20 @@ const Overview =() => {
           <p className="text-[12px] text-text-secondary">
             Granted by your Super Admin role
           </p>
+              </div>
+
+              <Button className="shrink-0 px-0 font-semibold !text-primary hover:!text-primary-dark" type="link" onClick={onViewSecurity}>
+                <span className="flex items-center gap-2">
+                  View more
+                  <ArrowRightOutlined />
+                </span>
+              </Button>
         </div>
 
         <ul className="space-y-3">
-          {permissions.map((permission) => (
+          {profilePermissions.map((permission) => (
             <li
-              key={permission}
+              key={permission.id}
               className="flex items-center gap-3"
             >
               <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-emerald-50 text-[11px] text-emerald-600">
@@ -152,7 +184,7 @@ const Overview =() => {
               </span>
 
               <span className="text-[13px] font-semibold text-text">
-                {permission}
+                {permission.title}
               </span>
             </li>
           ))}

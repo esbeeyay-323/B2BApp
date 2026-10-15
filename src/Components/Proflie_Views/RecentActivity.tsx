@@ -1,3 +1,6 @@
+import { ArrowRightOutlined } from "@ant-design/icons";
+import { Button } from "antd";
+
 interface SecurityItem {
   label: string;
   value: string;
@@ -22,10 +25,15 @@ const securityItems: SecurityItem[] = [
   },
 ];
 
-const AccountSecurity = () => {
+interface moreProps {
+  onViewSecurity : ()=> void;
+}
+
+const AccountSecurity = ({onViewSecurity}:moreProps) => {
     return (
         <>
-             <div className="mb-4">
+          <div className="mb-3 flex justify-between">
+        <div>
           <h2 className="text-[16px] font-bold text-text">
             Account Security
           </h2>
@@ -33,6 +41,14 @@ const AccountSecurity = () => {
           <p className="text-[12px] text-text-secondary">
             Snapshot of your account protection
           </p>
+        </div>
+
+         <Button className="shrink-0 px-0 font-semibold !text-primary hover:!text-primary-dark" type="link" onClick={onViewSecurity}>
+               <span className="flex items-center gap-2">
+                View more
+                <ArrowRightOutlined />
+              </span>
+          </Button>
         </div>
 
         <ul className="space-y-4">

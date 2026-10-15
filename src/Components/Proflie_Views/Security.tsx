@@ -1,5 +1,6 @@
 
 import {
+  CheckOutlined,
   EnvironmentOutlined,
   LaptopOutlined,
   LockOutlined,
@@ -7,6 +8,7 @@ import {
   SafetyCertificateOutlined,
 } from "@ant-design/icons";
 import { Button, Switch } from "antd";
+import { profilePermissions } from "./ProfilePermissions";
 
 type IconComponent = typeof LockOutlined;
 
@@ -153,7 +155,8 @@ const Security = () => {
                     )
                 })}
             </div>
-        <section className="w-full self-start rounded-panel border border-border bg-white p-4 shadow-panel sm:p-6 lg:w-33/100">
+        <div className="flex w-full flex-col gap-6 lg:w-33/100">
+        <section className="w-full rounded-panel border border-border bg-white p-4 shadow-panel sm:p-6">
       <div className="mb-3">
         <h2 className="text-[17px] font-bold text-text">
           Active Sessions
@@ -220,6 +223,50 @@ const Security = () => {
         })}
       </div>
     </section>
+        <section className="w-full rounded-panel border border-border bg-white p-4 shadow-panel sm:p-6">
+          <div className="mb-4 flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h2 className="text-[17px] font-bold text-text">
+                Permissions
+              </h2>
+
+              <p className="text-[13px] text-text-secondary">
+                Granted by your Super Admin role
+              </p>
+            </div>
+
+            <span className="shrink-0 rounded-full bg-primary-tint px-2.5 py-1 text-[11px] font-bold text-primary">
+              {profilePermissions.length} permissions
+            </span>
+          </div>
+
+          <ul className="divide-y divide-border">
+            {profilePermissions.map((permission) => (
+              <li key={permission.id} className="flex items-start gap-3 py-4 first:pt-1 last:pb-0">
+                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-emerald-50 text-[11px] text-emerald-600">
+                  <CheckOutlined />
+                </span>
+
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+                    <p className="text-[13px] font-bold text-text">
+                      {permission.title}
+                    </p>
+
+                    <span className="w-fit shrink-0 rounded-full bg-primary-tint px-2 py-0.5 text-[10px] font-bold text-primary">
+                      {permission.accessLabel}
+                    </span>
+                  </div>
+
+                  <p className="mt-1 text-[12px] leading-5 text-text-secondary">
+                    {permission.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+        </div>
         </main>
         </>
     )
