@@ -2,6 +2,7 @@ import {
   BellOutlined,
   DownOutlined,
   LogoutOutlined,
+  MenuOutlined,
   MoonOutlined,
   SearchOutlined,
   SettingOutlined,
@@ -12,7 +13,12 @@ import type { MenuProps } from "antd"
 import { useNavigate } from "react-router-dom"
 import { currentUserProfile, getInitials } from "../Mock/Workspace"
 
-const Header = () => {
+type HeaderProps = {
+  isNavigationOpen: boolean;
+  onOpenNavigation: () => void;
+};
+
+const Header = ({ isNavigationOpen, onOpenNavigation }: HeaderProps) => {
     const navigate = useNavigate();
 
     const accountItems: MenuProps["items"] = [
@@ -45,7 +51,16 @@ const Header = () => {
     return (
         <>
         <header className="sticky inset-x-0 top-0 z-40 box-border flex w-full min-w-0 shrink-0 self-stretch items-center justify-between gap-3 border-b border-border bg-surface px-4 py-4 sm:gap-5 sm:px-6">
-        <div className="dashboard-search min-w-0 flex-1 sm:w-[48%] sm:max-w-xl sm:flex-none">
+        <Button
+          aria-controls="mobile-navigation"
+          aria-expanded={isNavigationOpen}
+          aria-label="Open navigation menu"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control p-2 lg:hidden"
+          icon={<MenuOutlined />}
+          onClick={onOpenNavigation}
+        />
+
+        <div className="dashboard-search hidden min-w-0 sm:block sm:w-[48%] sm:max-w-xl sm:flex-none">
           <Input
             aria-label="Search dashboard"
             placeholder="Search people, goals, cycles…"
