@@ -12,7 +12,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Button, ConfigProvider } from "antd"
+import { Button } from "antd"
 import { Menu } from 'antd';
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -71,22 +71,6 @@ const SideBarMenu: React.FC = () => {
   const location = useLocation();
 
   return (
-  <ConfigProvider theme={{
-      components : {
-
-        Menu  : {
-          itemBorderRadius: 10,
-          itemHeight: 44,
-          itemHoverColor : "#564BD1",
-          itemHoverBg: "#EEECFE",
-          itemMarginInline: 12,
-          itemSelectedBg : "#6C5DF4",
-          itemSelectedColor: "#FFFFFF",
-          
-        }
-    
-      }
-  }}>
     <div className="flex h-full min-h-0 flex-col pb-4">
       <Menu
         className="dashboard-sidebar-nav flex-1"
@@ -110,7 +94,6 @@ const SideBarMenu: React.FC = () => {
         </Button>
       </div>
     </div>
-  </ConfigProvider>
   );
 };
 

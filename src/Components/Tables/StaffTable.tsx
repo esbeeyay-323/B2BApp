@@ -1,4 +1,4 @@
-import { Button, ConfigProvider, Select, Table } from "antd";
+import { Button, Select, Table } from "antd";
 import type { TableProps } from "antd";
 import { EllipsisOutlined } from "@ant-design/icons";
 import  { useMemo, useState } from "react";
@@ -320,22 +320,6 @@ return (
             </div>
 
 
-        <ConfigProvider
-      theme={{
-          components: {
-              Select: {
-                  optionActiveBg: "#F1F0F8",
-                  optionSelectedBg: "#EFEAFF",
-                  optionSelectedColor: "#6C5DF4",
-                  optionSelectedFontWeight: 700,
-                  optionFontSize: 13,
-                  optionHeight: 40,
-                  optionPadding: "8px 12px",   
-              },
-          },
-      }}
-  >
-
             <div className="my-4 flex w-full shrink-0 flex-col gap-3 px-4 sm:flex-row sm:gap-6 sm:px-6">
           {/* <label className="flex items-center gap-2 self-start rounded-control border border-border px-3 text-[13px] font-medium text-[#4D486F] xl:self-auto">
                    <span className="sr-only">Sort team members</span> 
@@ -392,7 +376,6 @@ return (
                                             />
                         </label>
                     </div>
-                    </ConfigProvider>
 
 
                     <div className="staff-table-reserved min-h-0 flex-1 overflow-hidden">

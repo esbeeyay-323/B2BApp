@@ -17,6 +17,26 @@ function App() {
   return (
     <ConfigProvider
       theme={{
+        components: {
+          Menu: {
+            itemBorderRadius: 10,
+            itemHeight: 44,
+            itemHoverColor: '#564BD1',
+            itemHoverBg: '#EEECFE',
+            itemMarginInline: 12,
+            itemSelectedBg: '#6C5DF4',
+            itemSelectedColor: '#FFFFFF',
+          },
+          Select: {
+            optionActiveBg: '#F1F0F8',
+            optionSelectedBg: '#EFEAFF',
+            optionSelectedColor: '#6C5DF4',
+            optionSelectedFontWeight: 700,
+            optionFontSize: 13,
+            optionHeight: 40,
+            optionPadding: '8px 12px',
+          },
+        },
         token: {
           colorPrimary: '#6C5DF4',
           colorPrimaryHover: '#7A6DF6',
