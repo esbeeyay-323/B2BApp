@@ -1,12 +1,14 @@
 import type { User } from "../Types/auth";
+import { currentUserProfile } from "./Workspace";
+
 export const MockUsers: User[] = [
   {
-    id: "d3f1a2b4-6c8e-4a9d-b3f2-1e5c7a9d0b2f",
-    name: "Sam Agyars",
-    email: "sam.agyars@apexforum.com",
-    password: "Kw@meB2024!",
+    id: currentUserProfile.id,
+    name: currentUserProfile.name,
+    email: currentUserProfile.email,
+    password: "JohnD0e@2026!",
     role: "SuperAdmin",
-    department: "IT Administration"
+    department: currentUserProfile.department,
   },
   {
     id: "a7e4c9d1-2f6b-4e3a-8c5d-9b1f4a7e2c6d",

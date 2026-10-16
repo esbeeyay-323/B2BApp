@@ -11,8 +11,8 @@ export const workspace = {
 
 export const currentUserProfile = {
   id: "APX-0042",
-  name: "Sam Agyars",
-  email: "sam.agyars@apexforum.com",
+  name: "John Doe",
+  email: "john.doe@apexforum.com",
   phone: "+233 543 323 3345",
   role: "Super Admin",
   department: "IT Administration",
