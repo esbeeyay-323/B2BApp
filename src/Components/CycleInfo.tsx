@@ -16,6 +16,7 @@ import {
 } from "@ant-design/icons";
 import { Button, Card, Descriptions, Divider, Flex, Switch, Tag, Timeline, Typography } from "antd";
 import type { CycleRecord, CycleStatus } from "./CyclesTable";
+import { currentUserProfile } from "../Mock/Workspace";
 
 interface CycleInfoProps {
     cycle: CycleRecord | null;
@@ -37,11 +38,11 @@ const phaseClassNames: Record<PhaseState, string> = {
 };
 
 const detailsByCycle: Record<number, { departments: string; ratingScale: string; createdBy: string }> = {
-    1: { departments: "All departments · 6", ratingScale: "5-point scale", createdBy: "Sam Agyars" },
-    2: { departments: "All departments · 6", ratingScale: "5-point scale", createdBy: "Sam Agyars" },
+    1: { departments: "All departments · 6", ratingScale: "5-point scale", createdBy: currentUserProfile.name },
+    2: { departments: "All departments · 6", ratingScale: "5-point scale", createdBy: currentUserProfile.name },
     3: { departments: "Human Resources · 1", ratingScale: "5-point scale", createdBy: "Akosua Boateng" },
-    4: { departments: "Engineering · 1", ratingScale: "5-point scale", createdBy: "Sam Agyars" },
-    5: { departments: "All departments · 6", ratingScale: "5-point scale", createdBy: "Sam Agyars" },
+    4: { departments: "Engineering · 1", ratingScale: "5-point scale", createdBy: currentUserProfile.name },
+    5: { departments: "All departments · 6", ratingScale: "5-point scale", createdBy: currentUserProfile.name },
     6: { departments: "Sales & Marketing · 1", ratingScale: "5-point scale", createdBy: "Ama Serwaa" },
 };
 

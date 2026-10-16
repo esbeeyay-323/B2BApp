@@ -3,9 +3,11 @@ import { Form, Input } from "antd";
 interface TwoSideInputProps {
     sectionOne : string;
     sectionTwo : string;
+    valueOne?: string;
+    valueTwo?: string;
 }
 
-const TwoSideInput = ({sectionOne, sectionTwo}:TwoSideInputProps) => {
+const TwoSideInput = ({sectionOne, sectionTwo, valueOne, valueTwo}:TwoSideInputProps) => {
 
         return (<>
         
@@ -17,7 +19,7 @@ const TwoSideInput = ({sectionOne, sectionTwo}:TwoSideInputProps) => {
                         {sectionOne}
                     </span>} 
                     layout="vertical">
-                        <Input style={{ fontSize: 16 }}/>
+                        <Input readOnly style={{ fontSize: 14 }} value={valueOne ?? ""}/>
                     </Form.Item>
                     </div>
                     <div className="w-full sm:flex-1 lg:w-45/100 lg:flex-none">
@@ -26,7 +28,7 @@ const TwoSideInput = ({sectionOne, sectionTwo}:TwoSideInputProps) => {
                             {sectionTwo}
                     </span>} 
                     layout="vertical">
-                        <Input style={{ fontSize: 16 }}/>
+                        <Input readOnly style={{ fontSize: 14 }} value={valueTwo ?? ""}/>
                     </Form.Item>
                     </div>
                 </div>

@@ -11,6 +11,7 @@ import {
 } from "@ant-design/icons";
 import { Button, Card, Form, Input, Select, Switch, message } from "antd";
 import { useState } from "react";
+import { workspace } from "../../Mock/Workspace";
 
 type SettingsValues = {
   companyName: string;
@@ -34,9 +35,9 @@ type SettingsValues = {
 };
 
 const initialValues: SettingsValues = {
-  companyName: "Apex Forum",
-  supportEmail: "people@apexforum.com",
-  workspaceUrl: "apex-forum",
+  companyName: workspace.name,
+  supportEmail: workspace.supportEmail,
+  workspaceUrl: workspace.slug,
   timezone: "gmt",
   language: "en-gb",
   defaultCycle: "biannual",
@@ -334,7 +335,7 @@ const Settings = () => {
 
         <footer className="mt-6 flex flex-col-reverse gap-3 rounded-panel border border-border bg-surface px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p className="text-[12px] leading-5 text-text-secondary">
-            Settings apply to all 142 people in this workspace.
+            Settings apply to all {workspace.totalEmployees} people in this workspace.
           </p>
           <div className="flex gap-3">
             <Button className="flex-1 sm:flex-none" onClick={handleReset}>

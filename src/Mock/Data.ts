@@ -19,6 +19,7 @@ import {
  
 
 } from "@ant-design/icons";
+import { currentReviewCycle, currentUserProfile, workspace } from "./Workspace";
 
 export interface Metric {
   title: string;
@@ -38,7 +39,7 @@ export interface superMetric {
 export const Metrics: Metric[] = [
   {
     title: "Total employees",
-    value: 1248,
+    value: workspace.totalEmployees,
     change: "+3.4%",
     status: "this quarter",
     icon: TeamOutlined,
@@ -66,8 +67,8 @@ export const Metrics: Metric[] = [
 export const employeeStats:superMetric[] = [
   {
     title: "Employees Managed",
-    value: "1,248",
-    description: "Across 6 departments",
+    value: workspace.totalEmployees.toLocaleString("en-GB"),
+    description: `Across ${workspace.departments} departments`,
   },
   {
     title: "Cycles Completed",
@@ -118,7 +119,7 @@ export const evaluationMetrics = [
     id: "days-remaining",
     title: "Days Remaining",
     value: "5 days",
-    description: "Due Aug 25, 2026",
+    description: `Due ${currentReviewCycle.selfAssessmentDue}`,
     icon: ClockCircleOutlined,
     iconClassName: "bg-amber-50 text-amber-600",
   },
@@ -132,7 +133,7 @@ export const teamEvaluationMetrics = [
     id: "direct-reports",
     title: "Direct Reports",
     value: "7",
-    description: "IT Administration",
+    description: currentUserProfile.department,
     icon: TeamOutlined,
     iconClassName: "bg-violet-50 text-violet-600",
   },
@@ -156,7 +157,7 @@ export const teamEvaluationMetrics = [
     id: "manager-review-due",
     title: "Manager Review Due",
     value: "11 days",
-    description: "Sep 5, 2026",
+    description: currentReviewCycle.managerReviewDue,
     icon: ClockCircleOutlined,
     iconClassName: "bg-red-50 text-red-500",
   },
@@ -167,23 +168,23 @@ export const employeeMetrics = [
   {
     id: "total-employees",
     title: "Total Employees",
-    value: 142,
-    description: "Across 6 departments",
+    value: workspace.totalEmployees,
+    description: `Across ${workspace.departments} departments`,
     icon: TeamOutlined,
     iconClassName: "bg-violet-50 text-violet-600",
   },
   {
     id: "active-accounts",
     title: "Active Accounts",
-    value: 128,
-    description: "90% of workforce",
+    value: workspace.activeEmployees,
+    description: `${Math.round((workspace.activeEmployees / workspace.totalEmployees) * 100)}% of workforce`,
     icon: CheckOutlined,
     iconClassName: "bg-emerald-50 text-emerald-600",
   },
   {
     id: "pending-invites",
     title: "Pending Invites",
-    value: 9,
+    value: workspace.pendingInvites,
     description: "3 sent over a week ago",
     icon: MessageOutlined,
     iconClassName: "bg-amber-50 text-amber-600",
@@ -191,7 +192,7 @@ export const employeeMetrics = [
   {
     id: "departments",
     title: "Departments",
-    value: 6,
+    value: workspace.departments,
     description: "Sales & Marketing largest",
     icon: ApartmentOutlined,
     iconClassName: "bg-teal-50 text-teal-600",
@@ -199,7 +200,7 @@ export const employeeMetrics = [
   {
     id: "on-leave",
     title: "On Leave",
-    value: 5,
+    value: workspace.employeesOnLeave,
     description: "3 returning this week",
     icon: CoffeeOutlined,
     iconClassName: "bg-rose-50 text-rose-600",
@@ -211,7 +212,7 @@ export const goalMetrics = [
     id: "total-goals",
     title: "Total Goals",
     value: 48,
-    description: "Across H1 2026",
+    description: `Across ${currentReviewCycle.shortName}`,
     icon: AimOutlined,
     iconClassName: "bg-violet-50 text-violet-600",
   },

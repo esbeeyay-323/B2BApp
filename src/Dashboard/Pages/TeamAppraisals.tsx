@@ -8,6 +8,7 @@ import { PageTitle } from "../../Components/DesignUtils"
 import { teamEvaluationMetrics } from "../../Mock/Data"
 import TeamTable from "../../Components/Tables/TeamTable"
 import { NeedsAttention, ReviewTimeline, TeamRatingSnapshot } from "../../Components/TeamAppraisalInsights"
+import { currentReviewCycle, currentUserProfile } from "../../Mock/Workspace"
 
 const TeamAppraisals = () => {
 
@@ -25,18 +26,18 @@ const TeamAppraisals = () => {
             </div>
             <div className="flex min-w-0 flex-col gap-2">
                 <p className="flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-4">
-                <span className="text-lg font-bold sm:text-[22px]">H1 2026 Team Apprasial</span>
+                <span className="text-lg font-bold sm:text-[22px]">{currentReviewCycle.shortName} Team Appraisal</span>
                 <span className="inline-flex items-center gap-2 rounded-full bg-[#FFF6E6] px-3 py-1 text-[12px] font-semibold text-[#B06A00]">
                 <span className=" inline-block rounded-full size-1.5 bg-[#B06A00]"/> Manager Review · Open</span>
                 </p>
                 
-                <p className="text-[14px] font-normal text-text-secondary">IT Administration · Reporting to David Mensah</p>
+                <p className="text-[14px] font-normal text-text-secondary">{currentUserProfile.department} · Reporting to {currentUserProfile.manager}</p>
 
 
                 <p className="flex flex-col gap-2 text-[13px] font-normal text-text-muted sm:flex-row sm:flex-wrap sm:gap-x-4">
-                    <span><CalendarOutlined/> Jan – Jun 2026</span>
-                    <span><ClockCircleOutlined/> Due Sept 15, 2026</span>
-                    <span><CopyOutlined/> 7 appraisals</span>
+                    <span><CalendarOutlined/> {currentReviewCycle.period}</span>
+                    <span><ClockCircleOutlined/> Due {currentReviewCycle.managerReviewDue}</span>
+                    <span><CopyOutlined/> {currentReviewCycle.teamAppraisals} appraisals</span>
                 </p>
             </div>
             </div> 
