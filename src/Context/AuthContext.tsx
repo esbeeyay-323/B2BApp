@@ -5,11 +5,33 @@ import {MockUsers} from "../Mock/Users.ts"
 // 1. Create the Context object with an undefined default value
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+const createSessionUser = (user: User): User => ({
+  id: user.id,
+  name: user.name,
+  email: user.email,
+  role: user.role,
+  department: user.department,
+});
+
 // 2. Build the Provider Component
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(() => {
     const savedUser = localStorage.getItem('apex_user');
-    return savedUser ? JSON.parse(savedUser) : null;
+    if (!savedUser) return null;
+
+    try {
+      const storedUser = JSON.parse(savedUser) as User;
+      const currentUser = MockUsers.find(({ id, email }) =>
+        id === storedUser.id || email === storedUser.email
+      );
+
+      if (currentUser) return createSessionUser(currentUser);
+    } catch {
+      // Invalid or outdated session data is cleared below.
+    }
+
+    localStorage.removeItem('apex_user');
+    return null;
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -25,13 +47,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     
     if(!findUser || password !== findUser.password) return false
 
-    const mockUser: User = {
-      id: Math.random().toString(36).substr(2, 9),
-      name: findUser.name,
-      email: findUser.email,
-      role: findUser.role ,
-      department: findUser.department,
-    };
+    const mockUser = createSessionUser(findUser);
 
     setUser(mockUser);
     console.log(findUser)
