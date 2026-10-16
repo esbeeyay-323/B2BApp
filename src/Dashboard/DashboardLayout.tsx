@@ -1,10 +1,30 @@
-import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import SideBarMenu from "../Components/SideBarMenu";
 import Logo2 from "../assets/Logo2.webp"
 import Header from "../Components/Header";
 
+const pageTitles: Record<string, string> = {
+  "/dashboard": "Dashboard",
+  "/dashboard/profile": "Profile",
+  "/dashboard/goals": "Goals",
+  "/dashboard/self-evaluation": "Self Evaluation",
+  "/dashboard/team-appraisals": "Team Appraisals",
+  "/dashboard/user-directory": "User Directory",
+  "/dashboard/cycle-settings": "Cycle Settings",
+  "/dashboard/settings": "Settings",
+};
 
 const DashboardLayout = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const normalizedPath = pathname.replace(/\/$/, "") || "/dashboard";
+    const pageTitle = pageTitles[normalizedPath] ?? "Dashboard";
+
+    document.title = `ApexPerform | ${pageTitle}`;
+  }, [pathname]);
+
   return (
     <main className="flex min-h-dvh w-full max-w-full bg-bg">
       
