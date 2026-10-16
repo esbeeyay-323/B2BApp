@@ -648,10 +648,6 @@ select:not(:disabled) {
 }
 
 @media (max-width: 639px) {
-  .dashboard-search {
-    width: 0;
-  }
-
   .workspace-url-prefix {
     display: inline-block;
     max-width: 128px;

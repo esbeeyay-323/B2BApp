@@ -17,6 +17,10 @@ import { Menu } from 'antd';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
+type SideBarMenuProps = {
+  onNavigate?: () => void;
+};
+
 const items: MenuItem[] = [
   {
     key: '/dashboard',
@@ -64,7 +68,7 @@ const items: MenuItem[] = [
   }
 ];
 
-const SideBarMenu: React.FC = () => {
+const SideBarMenu: React.FC<SideBarMenuProps> = ({ onNavigate }) => {
   
 
   const navigate = useNavigate();
@@ -74,7 +78,10 @@ const SideBarMenu: React.FC = () => {
     <div className="flex h-full min-h-0 flex-col pb-4">
       <Menu
         className="dashboard-sidebar-nav flex-1"
-        onClick={(info)=>navigate(info.key)}
+        onClick={(info) => {
+          navigate(info.key);
+          onNavigate?.();
+        }}
         selectedKeys={[location.pathname]}
         style={{ width: "100%" }}
         mode="inline"
