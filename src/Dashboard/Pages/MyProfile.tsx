@@ -9,6 +9,7 @@ import PersonalDetails from "../../Components/Proflie_Views/PersonalDetails"
 import ActivityLog from "../../Components/Proflie_Views/ActivityLog"
 import Security from "../../Components/Proflie_Views/Security"
 import { useState, type ReactNode } from "react"
+import { currentUserProfile } from "../../Mock/Workspace"
 
 type ProfileTab =
   | "overview"
@@ -53,13 +54,13 @@ const profileViews: Record<ProfileTab, ReactNode> = {
                 <div className="flex min-w-0 flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6 lg:gap-8">
                     <ProfileAvatar/>
                     <div className="flex min-w-0 flex-col">
-                        <h1 className="text-[21px] font-extrabold text-text">Sam Agyars 
-                            <span className="mt-2 block w-fit rounded-full bg-violet-200 px-2 py-1 text-[11px] font-bold text-violet-700 sm:ml-3 sm:mt-0 sm:inline">Super Admin</span></h1>
-                            <h2 className="mt-1 text-[13px] font-normal text-text-secondary">IT Administration · Accra HQ</h2>
+                        <h1 className="text-[21px] font-extrabold text-text">{currentUserProfile.name}{" "}
+                            <span className="mt-2 block w-fit rounded-full bg-violet-200 px-2 py-1 text-[11px] font-bold text-violet-700 sm:ml-3 sm:mt-0 sm:inline">{currentUserProfile.role}</span></h1>
+                            <h2 className="mt-1 text-[13px] font-normal text-text-secondary">{currentUserProfile.department} · {currentUserProfile.office}</h2>
                             <div className="mt-3 flex w-full min-w-0 flex-col gap-2 md:flex-row md:flex-wrap md:gap-x-6 lg:gap-x-8">
-                                <h2 className="mt-1 flex min-w-0 items-center gap-1 break-all text-[12.5px] font-normal text-text-muted"> <MailOutlined className="shrink-0"/> sam.agyars@apexforum.com</h2>
-                                <h2 className="mt-1 flex items-center gap-1 text-[12.5px] font-normal text-text-muted"> <PhoneOutlined/> +233 543 323 3345</h2>
-                                <h2 className="mt-1 flex items-center gap-1 text-[12.5px] font-normal text-text-muted"> <EnvironmentOutlined/> Accra, Ghana</h2>
+                                <h2 className="mt-1 flex min-w-0 items-center gap-1 break-all text-[12.5px] font-normal text-text-muted"> <MailOutlined className="shrink-0"/> {currentUserProfile.email}</h2>
+                                <h2 className="mt-1 flex items-center gap-1 text-[12.5px] font-normal text-text-muted"> <PhoneOutlined/> {currentUserProfile.phone}</h2>
+                                <h2 className="mt-1 flex items-center gap-1 text-[12.5px] font-normal text-text-muted"> <EnvironmentOutlined/> {currentUserProfile.location}</h2>
                             </div>     
                     </div>
                 </div>

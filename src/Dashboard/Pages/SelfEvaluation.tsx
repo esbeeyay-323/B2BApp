@@ -12,6 +12,7 @@ import { competencyEvaluationForms, developmentFields } from "../../Mock/ReviewF
 import RatingScale from "../../Components/Forms/RatingScale";
 import RreveiwTimeline from "../../Components/Forms/RreveiwTimeline";
 import BeforeSubmit from "../../Components/Forms/Beforesubmit";
+import { currentReviewCycle, currentUserProfile } from "../../Mock/Workspace";
 
 
 
@@ -145,7 +146,7 @@ const steps = [
 
     return (
         <>
-        <main className="m-6 flex flex-col gap-8">
+        <main className="flex min-w-0 flex-col gap-8 px-4 py-6 sm:px-6">
         <PageTitle mainText="Self Evaluation" 
         subText="Work through each section, save as you go, and submit when you're ready for manager review."/>
 
@@ -157,18 +158,18 @@ const steps = [
             </div>
             <div className="flex min-w-0 flex-col gap-2">
                 <p className="flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-4">
-                <span className="text-lg font-bold sm:text-[22px]">H1 2026 Performance Review</span>
+                <span className="text-lg font-bold sm:text-[22px]">{currentReviewCycle.name}</span>
                 <span className="inline-flex items-center gap-2 rounded-full bg-[#FFF6E6] px-3 py-1 text-[12px] font-semibold text-[#B06A00]">
                 <span className=" inline-block rounded-full size-1.5 bg-[#B06A00]"/> Self-Assessment · In Progress</span>
                 </p>
                 
-                <p className="text-[14px] font-normal text-text-secondary">IT Administration · Reporting to David Mensah</p>
+                <p className="text-[14px] font-normal text-text-secondary">{currentUserProfile.department} · Reporting to {currentUserProfile.manager}</p>
 
 
                 <p className="flex flex-col gap-2 text-[13px] font-normal text-text-muted sm:flex-row sm:flex-wrap sm:gap-x-4">
-                    <span><CalendarOutlined/> Jan – Jun 2026</span>
-                    <span><ClockCircleOutlined/> Due Aug 25, 2026</span>
-                    <span><BarChartOutlined/> 6 goals · 4 competencies</span>
+                    <span><CalendarOutlined/> {currentReviewCycle.period}</span>
+                    <span><ClockCircleOutlined/> Due {currentReviewCycle.selfAssessmentDue}</span>
+                    <span><BarChartOutlined/> {currentReviewCycle.goals} goals · {currentReviewCycle.competencies} competencies</span>
                 </p>
             </div>
             </div> 

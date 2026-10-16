@@ -1,7 +1,46 @@
-import { BellOutlined, MoonOutlined, SearchOutlined } from "@ant-design/icons"
-import { Avatar, Button, Input } from "antd"
+import {
+  BellOutlined,
+  DownOutlined,
+  LogoutOutlined,
+  MoonOutlined,
+  SearchOutlined,
+  SettingOutlined,
+  UserOutlined,
+} from "@ant-design/icons"
+import { Avatar, Button, Dropdown, Input } from "antd"
+import type { MenuProps } from "antd"
+import { useNavigate } from "react-router-dom"
+import { currentUserProfile, getInitials } from "../Mock/Workspace"
 
 const Header = () => {
+    const navigate = useNavigate();
+
+    const accountItems: MenuProps["items"] = [
+      {
+        key: "profile",
+        icon: <UserOutlined />,
+        label: "Profile",
+      },
+      {
+        key: "settings",
+        icon: <SettingOutlined />,
+        label: "Settings",
+      },
+      { type: "divider" },
+      {
+        key: "logout",
+        danger: true,
+        disabled: true,
+        icon: <LogoutOutlined />,
+        label: "Logout",
+        title: "Logout is coming soon",
+      },
+    ];
+
+    const handleAccountMenu: MenuProps["onClick"] = ({ key }) => {
+      if (key === "profile") navigate("/dashboard/profile");
+      if (key === "settings") navigate("/dashboard/settings");
+    };
     
     return (
         <>
@@ -36,15 +75,30 @@ const Header = () => {
             + Start New Cycle
           </Button>
 
-          <div className="flex flex-row-reverse items-center justify-center gap-2 sm:ml-3 lg:ml-6">
-            <div className="hidden flex-col justify-center md:flex">
-              <h1 className="text-[12px] font-medium text-text">Sam Agyars</h1>
-              <h2 className="text-[11px] font-normal text-text-secondary">
-                Super Admin
-              </h2>
-            </div>
-            <Avatar className="bg-accent-purple text-xs font-semibold">SA</Avatar>
-          </div>
+          <Dropdown
+            menu={{ items: accountItems, onClick: handleAccountMenu }}
+            placement="bottomRight"
+            trigger={["click"]}
+          >
+            <Button
+              aria-label="Open account menu"
+              className="account-menu-trigger ml-1 flex h-11 items-center gap-2 rounded-control px-1.5 sm:ml-3 sm:px-2 lg:ml-6"
+              type="text"
+            >
+              <Avatar className="bg-accent-purple text-xs font-semibold">
+                {getInitials(currentUserProfile.name)}
+              </Avatar>
+              <span className="hidden min-w-0 flex-col items-start justify-center md:flex">
+                <span className="max-w-32 truncate text-[12px] font-semibold leading-4 text-text">
+                  {currentUserProfile.name}
+                </span>
+                <span className="text-[11px] font-normal leading-4 text-text-secondary">
+                  {currentUserProfile.role}
+                </span>
+              </span>
+              <DownOutlined className="hidden text-[10px] text-text-muted md:inline-flex" />
+            </Button>
+          </Dropdown>
         </div>
       </header>
         </>

@@ -6,12 +6,13 @@ import {
   ContactsOutlined,
   DashboardOutlined,
   FormOutlined,
+  LogoutOutlined,
   SettingOutlined,
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import {ConfigProvider} from "antd"
+import { Button, ConfigProvider } from "antd"
 import { Menu } from 'antd';
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -86,15 +87,29 @@ const SideBarMenu: React.FC = () => {
     
       }
   }}>
-    <Menu
-      className="dashboard-sidebar-nav"
-      onClick={(info)=>navigate(info.key)}
-      selectedKeys={[location.pathname]}
-      style={{ width: "100%", height : "100%"}}
-      mode="inline"
-      items={items}
-      
-    />
+    <div className="flex h-full min-h-0 flex-col pb-4">
+      <Menu
+        className="dashboard-sidebar-nav flex-1"
+        onClick={(info)=>navigate(info.key)}
+        selectedKeys={[location.pathname]}
+        style={{ width: "100%" }}
+        mode="inline"
+        items={items}
+      />
+      <div className="mx-3 border-t border-border pt-3">
+        <Button
+          aria-label="Log out"
+          className="h-11 w-full justify-start px-4 text-left"
+          danger
+          disabled
+          icon={<LogoutOutlined />}
+          title="Logout is coming soon"
+          type="text"
+        >
+          Logout
+        </Button>
+      </div>
+    </div>
   </ConfigProvider>
   );
 };

@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Badge, Button, Card, Flex, Grid, Progress, Select, Table, Tag, Typography } from "antd";
 import type { TableProps } from "antd";
 import { EllipsisOutlined } from "@ant-design/icons";
+import { workspace } from "../Mock/Workspace";
 
 export type CycleStatus = "Active" | "Draft" | "Completed";
 export type CycleType = "Quarterly" | "Annual" | "Probation" | "Custom";
@@ -30,7 +31,7 @@ const cycles: CycleRecord[] = [
         name: "Q3 2026 Performance Review",
         type: "Quarterly",
         timeline: "Jul 1 – Sep 30, 2026",
-        participants: 142,
+        participants: workspace.totalEmployees,
         progress: 68,
         status: "Active",
         createdOrder: 6,
@@ -40,7 +41,7 @@ const cycles: CycleRecord[] = [
         name: "Annual Review 2026",
         type: "Annual",
         timeline: "Jan 1 – Dec 31, 2026",
-        participants: 142,
+        participants: workspace.totalEmployees,
         progress: 22,
         status: "Active",
         createdOrder: 5,

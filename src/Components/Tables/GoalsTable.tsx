@@ -23,6 +23,7 @@ import {
     RiseOutlined,
     WarningOutlined,
 } from "@ant-design/icons";
+import { currentReviewCycle, currentUserProfile, getInitials } from "../../Mock/Workspace";
 
 type GoalFilter = "all" | "my-goals" | "team-goals" | "at-risk";
 type GoalStatus = "On track" | "In progress" | "At risk" | "Incomplete" | "Completed";
@@ -44,8 +45,8 @@ const goals: GoalRecord[] = [
     {
         id: 1,
         goal: "Improve platform reliability",
-        owner: "Sam Agyars",
-        ownerInitials: "SA",
+        owner: currentUserProfile.name,
+        ownerInitials: getInitials(currentUserProfile.name),
         ownerColor: "#6C5DF4",
         alignment: "Operational excellence",
         progress: 72,
@@ -310,7 +311,7 @@ const GoalsTable = () => {
         >
             <Flex className="shrink-0" gap={2} vertical>
                 <Typography.Title className="m-0! text-[18px]! font-extrabold! text-text!" level={2}>
-                    H1 2026 Goals
+                    {currentReviewCycle.shortName} Goals
                 </Typography.Title>
                 <Typography.Text className="text-[13px] text-text-secondary">
                     Track alignment and progress

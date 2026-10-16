@@ -9,6 +9,7 @@ import DonutChart from "../../Components/Analytics/DonutChart";
 import { Metrics, type Metric } from "../../Mock/Data";
 import { MockUsers } from "../../Mock/Users";
 import { cardClassName } from "../../Components/DesignUtils";
+import { currentReviewCycle, currentUserProfile, getInitials } from "../../Mock/Workspace";
 
 
 const approvalDetails = [
@@ -38,26 +39,18 @@ const approvalDetails = [
   },
 ];
 
-const getInitials = (name: string) =>
-  name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-
 const DashboardHome = () => {
   return (
     <main className="flex  w-full flex-col bg-bg">
       
 
-      <section className="m-6 mt-7 flex flex-col">
+      <section className="flex flex-col px-4 py-6 sm:px-6">
         <div className="mb-6 w-full">
           <h1 className="text-2xl font-semibold text-text">
-            Welcome back, Sam Agyars
+            Welcome back, {currentUserProfile.name}
           </h1>
           <p className="text-sm font-normal text-text-secondary">
-            Q2 2026 appraisal cycle · 12 days remaining
+            {currentReviewCycle.shortName} appraisal cycle · {currentReviewCycle.selfAssessmentDaysRemaining} days remaining
           </p>
         </div>
 
@@ -118,7 +111,7 @@ const DashboardHome = () => {
             styles={{ body: { padding: "8px 20px 20px" } }}
           >
             <ul>
-              {MockUsers.slice(0, 4).map((approval, index) => {
+              {MockUsers.slice(1, 5).map((approval, index) => {
                 const details = approvalDetails[index];
 
                 return (

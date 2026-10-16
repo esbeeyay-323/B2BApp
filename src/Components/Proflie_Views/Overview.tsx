@@ -10,6 +10,7 @@ import type { ReactNode } from "react";
 import AccountSecurity from "./RecentActivity";
 import { Button } from "antd";
 import { profilePermissions } from "./ProfilePermissions";
+import { currentReviewCycle, currentUserProfile } from "../../Mock/Workspace";
 
 interface Activity {
   id: number;
@@ -29,7 +30,7 @@ const activities: Activity[] = [
   },
   {
     id: 2,
-    title: "Started Q2 2026 Appraisal Cycle for all departments",
+    title: `Started ${currentReviewCycle.shortName} Appraisal Cycle for all departments`,
     time: "3 days ago",
     icon: <PlusOutlined />,
     iconClassName: "bg-indigo-50 text-indigo-500",
@@ -85,14 +86,20 @@ const Overview =({onViewMore, onViewLogs, onViewSecurity}:moreProps) => {
             {<TwoSideInput 
             sectionOne = "FULLNAME"
             sectionTwo = "EMPLOYEE ID"
+            valueOne={currentUserProfile.name}
+            valueTwo={currentUserProfile.id}
             />}
             {<TwoSideInput 
             sectionOne = "DEPARTMENT"
             sectionTwo = "JOB TITLE"
+            valueOne={currentUserProfile.department}
+            valueTwo={currentUserProfile.jobTitle}
             />}
             {<TwoSideInput 
             sectionOne = "DATE JOINED"
             sectionTwo = "REPORTING TO"
+            valueOne={currentUserProfile.joinedDate}
+            valueTwo={currentUserProfile.manager}
             />}
         </div>
             
@@ -161,7 +168,7 @@ const Overview =({onViewMore, onViewLogs, onViewSecurity}:moreProps) => {
           </h2>
 
           <p className="text-[12px] text-text-secondary">
-            Granted by your Super Admin role
+            Granted by your {currentUserProfile.role} role
           </p>
               </div>
 

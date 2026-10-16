@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import TwoSideInput from "../Forms/TwoSideInput";
 import { EditOutlined } from "@ant-design/icons";
+import { currentUserProfile } from "../../Mock/Workspace";
 
 
 const PersonalDetails = () => {
@@ -28,6 +29,8 @@ const PersonalDetails = () => {
                 <TwoSideInput 
                 sectionOne="FULLNAME"
                 sectionTwo="Employee id"
+                valueOne={currentUserProfile.name}
+                valueTwo={currentUserProfile.id}
                 />
             }
             </div>
@@ -36,6 +39,8 @@ const PersonalDetails = () => {
                 <TwoSideInput 
                 sectionOne="Gender"
                 sectionTwo="date of birth"
+                valueOne={currentUserProfile.gender}
+                valueTwo={currentUserProfile.dateOfBirth}
                 />
             }
             </div>
@@ -46,6 +51,8 @@ const PersonalDetails = () => {
                 <TwoSideInput 
                 sectionOne="email address"
                 sectionTwo="phone number"
+                valueOne={currentUserProfile.email}
+                valueTwo={currentUserProfile.phone}
                 />
             }
             </div>
@@ -54,6 +61,8 @@ const PersonalDetails = () => {
                 <TwoSideInput 
                 sectionOne="address"
                 sectionTwo="emergency contact"
+                valueOne={currentUserProfile.address}
+                valueTwo={currentUserProfile.emergencyContact}
                 />
             }
             </div>
@@ -64,6 +73,8 @@ const PersonalDetails = () => {
                 <TwoSideInput 
                 sectionOne="department"
                 sectionTwo="job title"
+                valueOne={currentUserProfile.department}
+                valueTwo={currentUserProfile.jobTitle}
                 />
             }
             </div>
@@ -72,6 +83,8 @@ const PersonalDetails = () => {
                 <TwoSideInput 
                 sectionOne="employment type"
                 sectionTwo="date joined"
+                valueOne={currentUserProfile.employmentType}
+                valueTwo={currentUserProfile.joinedDate}
                 />
             }
             </div>

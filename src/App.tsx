@@ -1,5 +1,5 @@
 //import { useState } from 'react'
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import DashboardLayout from './Dashboard/DashboardLayout';
 import { ConfigProvider } from 'antd';
 import DashboardHome from './Dashboard/Pages/DashboardHome';
@@ -35,6 +35,7 @@ function App() {
     >
 
       <Routes>
+        <Route path='/' element={<Navigate replace to='/dashboard' />}/>
         <Route path='/dashboard' element={<DashboardLayout/>}>
           <Route index element={<DashboardHome/>}/>
           <Route path='profile' element={<MyProfile/>}/>
@@ -46,6 +47,7 @@ function App() {
           <Route path='settings' element={<Settings/>}/>
 
         </Route>
+        <Route path='*' element={<Navigate replace to='/dashboard' />}/>
       </Routes>
 
 

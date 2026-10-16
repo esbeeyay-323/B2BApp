@@ -1,5 +1,6 @@
 import { Avatar, Button } from "antd";
 import { CameraOutlined } from "@ant-design/icons";
+import { currentUserProfile, getInitials } from "../Mock/Workspace";
 
 const ProfileAvatar = () => {
   return (
@@ -13,7 +14,7 @@ const ProfileAvatar = () => {
           fontWeight: 600,
         }}
       >
-        SA
+        {getInitials(currentUserProfile.name)}
       </Avatar>
 
       <Avatar
@@ -25,7 +26,7 @@ const ProfileAvatar = () => {
           fontWeight: 600,
         }}
       >
-        SA
+        {getInitials(currentUserProfile.name)}
       </Avatar>
 
       <Button

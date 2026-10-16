@@ -2,6 +2,7 @@ import { Button, ConfigProvider, Select, Table } from "antd";
 import type { TableProps } from "antd";
 import { EllipsisOutlined } from "@ant-design/icons";
 import  { useMemo, useState } from "react";
+import { currentUserProfile, getInitials, workspace } from "../../Mock/Workspace";
 
 export type StaffRole = "Employee" | "Manager" | "HR Admin" | "Super Admin";
 export type StaffStatus = "Active" | "Invited" | "Inactive";
@@ -38,7 +39,7 @@ const staffMembers: StaffMember[] = [
         manager: "David Mensah",
         status: "Active",
         lastActive: "Today",
-        email: "adjoa.frimpong@afrianom.com",
+        email: "adjoa.frimpong@apexforum.com",
         location: "Accra Office",
         joinedDate: "Feb 2024",
     },
@@ -53,7 +54,7 @@ const staffMembers: StaffMember[] = [
         manager: "Efua Danso",
         status: "Active",
         lastActive: "Yesterday",
-        email: "kwabena.sarpong@afrianom.com",
+        email: "kwabena.sarpong@apexforum.com",
         location: "Accra Office",
         joinedDate: "Aug 2024",
     },
@@ -68,7 +69,7 @@ const staffMembers: StaffMember[] = [
         manager: "—",
         status: "Active",
         lastActive: "2 days ago",
-        email: "akosua.boateng@afrianom.com",
+        email: "akosua.boateng@apexforum.com",
         location: "Accra Office",
         joinedDate: "Nov 2022",
     },
@@ -83,7 +84,7 @@ const staffMembers: StaffMember[] = [
         manager: "Kojo Mensah",
         status: "Invited",
         lastActive: "Not yet logged in",
-        email: "yaa.asantewaa@afrianom.com",
+        email: "yaa.asantewaa@apexforum.com",
         location: "Kumasi Office",
         joinedDate: "Invited Aug 2026",
     },
@@ -98,7 +99,7 @@ const staffMembers: StaffMember[] = [
         manager: "Ama Serwaa",
         status: "Inactive",
         lastActive: "47 days ago",
-        email: "kwesi.boateng@afrianom.com",
+        email: "kwesi.boateng@apexforum.com",
         location: "Accra Office",
         joinedDate: "Jun 2023",
     },
@@ -113,24 +114,24 @@ const staffMembers: StaffMember[] = [
         manager: "David Mensah",
         status: "Active",
         lastActive: "3 days ago",
-        email: "ama.serwaa@afrianom.com",
+        email: "ama.serwaa@apexforum.com",
         location: "Accra Office",
         joinedDate: "Mar 2023",
     },
     {
         id: 7,
-        name: "David Mensah",
-        jobTitle: "Head of IT Administration",
-        initials: "DM",
+        name: currentUserProfile.name,
+        jobTitle: currentUserProfile.jobTitle,
+        initials: getInitials(currentUserProfile.name),
         avatarClassName: "bg-[#0EA5A4]",
-        department: "IT Administration",
-        accessRole: "Super Admin",
-        manager: "—",
+        department: currentUserProfile.department,
+        accessRole: currentUserProfile.role,
+        manager: currentUserProfile.manager,
         status: "Active",
         lastActive: "Today",
-        email: "david.mensah@afrianom.com",
-        location: "Accra Office",
-        joinedDate: "Jan 2021",
+        email: currentUserProfile.email,
+        location: currentUserProfile.office,
+        joinedDate: currentUserProfile.joinedDate,
     },
 ];
 
@@ -412,7 +413,7 @@ return (
                     </div>
 
         <footer className="shrink-0 border-t border-border px-5 py-4 text-[12px] text-text-secondary sm:px-6">
-            Showing {visibleMembers.length} of 142 employees
+            Showing {visibleMembers.length} of {workspace.totalEmployees} employees
         </footer>
     </section>
 )
